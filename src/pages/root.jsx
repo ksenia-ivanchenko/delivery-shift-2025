@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getPokemonsIsLoading, getPokemonsList } from '../utils/redux/pokemons/seletor';
-import { fetchPokemons } from '../utils/redux/pokemons/thunks';
+import { getPokemonsIsLoading, getPokemonsList } from '../utils/redux/delivery/seletor';
+import { fetchPokemons } from '../utils/redux/delivery/thunks';
 
-export const RootPage = () => {
+export function RootPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(getPokemonsIsLoading);
   const list = useSelector(getPokemonsList);
@@ -33,4 +33,4 @@ export const RootPage = () => {
       </div>
     </>
   );
-};
+}
