@@ -34,3 +34,14 @@ export type TGetUserSessionResponse = {
   user: TUser;
   reason?: string;
 };
+
+export type TUpdateUserDataRequest = {
+  profile: Omit<TUser, 'phone'>;
+  phone: string;
+};
+
+export type TUpdateUserDataResponse = {
+  success: boolean;
+  reason?: string;
+  user: TUser;
+};
