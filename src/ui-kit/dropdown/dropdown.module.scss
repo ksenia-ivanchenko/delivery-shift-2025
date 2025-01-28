@@ -1,0 +1,67 @@
+@import '../../styles/index.scss';
+
+.dropdownContainer {
+  position: relative;
+  min-inline-size: 320px;
+}
+
+.label {
+  line-height: $main-line-height;
+  display: block;
+  margin-block-end: 8px;
+}
+
+.selectBox {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border: $input-border;
+  border-radius: $input-border-radius;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $input-disabled-bg;
+  }
+
+  &.open {
+    background-color: $input-disabled-bg;
+  }
+}
+
+.icon {
+  margin-right: 5px;
+  display: flex;
+}
+
+.selectedOption {
+  flex-grow: 1;
+  color: $input-text-color;
+}
+
+.placeholder {
+  color: $input-placeholder-text-color;
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+.suggestedOptions {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+  position: absolute;
+}
+
+.arrowDown {
+  transform: rotate(180deg);
+}
+
+.arrow {
+  transition: all 0.3s ease-in-out;
+}
+
+.content {
+  position: absolute;
+}

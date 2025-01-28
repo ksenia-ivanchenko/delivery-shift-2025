@@ -4,7 +4,8 @@
     "jsx": "react-jsx", // позволяем использовать jsx без необходимости импортировать React вручную
     "moduleResolution": "node", // разрешаем импортировать модули
     "lib": ["dom", "es2015"], // подключаем типы, связанные с браузерным API и поддержку типов ECMAScript 2015
-    "module": "esnext" // определяем модульный режим для работы ts с современными функциями и совместимость с ECMAScript Modules
+    "module": "esnext", // определяем модульный режим для работы ts с современными функциями и совместимость с ECMAScript Modules
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
 }
