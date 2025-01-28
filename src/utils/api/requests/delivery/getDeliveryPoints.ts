@@ -1,7 +1,5 @@
 import { api } from '../../instance';
-import { TGetDeliveryPointsResponse } from './types';
+import { GetDeliveryPointsResponse } from './types';
 
-export const getDeliveryPoints = async (): Promise<TGetDeliveryPointsResponse> => {
-  const response = await api.get<TGetDeliveryPointsResponse>('/delivery/points');
-  return response.data;
-};
+export const getDeliveryPoints = async () =>
+  await api.get<GetDeliveryPointsResponse>('/delivery/points');

@@ -1,11 +1,11 @@
 import { setCookie } from '../../../cookie';
 import { api } from '../../instance';
-import { TLoginData, TSignInResponse } from './types';
+import { LoginData, SignInResponse } from './types';
 
-export const signIn = async (data: TLoginData): Promise<TSignInResponse> => {
-  const response = await api.post<TSignInResponse>('/users/signin', data);
+export const signIn = async (data: LoginData) => {
+  const response = await api.post<SignInResponse>('/users/signin', data);
   if (response.data.success) {
     setCookie('accessToken', response.data.token);
   }
-  return response.data;
+  return response;
 };

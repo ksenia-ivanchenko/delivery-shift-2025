@@ -1,17 +1,17 @@
-export type TPoint = {
+export type Point = {
   id: string;
   name: string;
   latitude: number;
   longitude: number;
 };
 
-export type TGetDeliveryPointsResponse = {
+export type GetDeliveryPointsResponse = {
   success: boolean;
   reason?: string;
-  points: TPoint[];
+  points: Point[];
 };
 
-export type TPackage = {
+export type Package = {
   id: string;
   name: string;
   length: number;
@@ -20,16 +20,16 @@ export type TPackage = {
   height: number;
 };
 
-export type TGetPackageTypesResponse = {
+export type GetPackageTypesResponse = {
   success: boolean;
   reason?: string;
-  packages: TPackage[];
+  packages: Package[];
 };
 
-export type TCalculateDeliveryRequest = {
-  package: Omit<TPackage, 'id' | 'name'>;
-  senderPoint: Omit<TPoint, 'id' | 'name'>;
-  receiverPoint: Omit<TPoint, 'id' | 'name'>;
+export type CalculateDeliveryRequest = {
+  package: Omit<Package, 'id' | 'name'>;
+  senderPoint: Omit<Point, 'id' | 'name'>;
+  receiverPoint: Omit<Point, 'id' | 'name'>;
 };
 
 export enum DeliveryType {
@@ -37,7 +37,7 @@ export enum DeliveryType {
   EXPRESS = 'EXPRESS'
 }
 
-export type TDeliveryOption = {
+export type DeliveryOption = {
   id: string;
   price: number;
   days: number;
@@ -45,20 +45,20 @@ export type TDeliveryOption = {
   type: DeliveryType;
 };
 
-export type TCalculateDeliveryResponse = {
+export type CalculateDeliveryResponse = {
   success: boolean;
   reason: string;
-  options: TDeliveryOption[];
+  options: DeliveryOption[];
 };
 
-export type TAddress = {
+export type Address = {
   street: string;
   house: string;
   apartment: string;
   comment: string;
 };
 
-export type TPerson = {
+export type Person = {
   firstname: string;
   lastname: string;
   middlename: string;
@@ -70,41 +70,41 @@ export enum Payer {
   SENDER = 'SENDER'
 }
 
-export type TPostOrderRequest = {
-  senderPoint: TPoint;
-  senderAddress: TAddress;
-  sender: TPerson;
-  receiverPoint: TPoint;
-  receiverAddress: TAddress;
-  receiver: TPerson;
+export type PostOrderRequest = {
+  senderPoint: Point;
+  senderAddress: Address;
+  sender: Person;
+  receiverPoint: Point;
+  receiverAddress: Address;
+  receiver: Person;
   payer: Payer;
-  option: TDeliveryOption;
+  option: DeliveryOption;
 };
 
-export type TOrderResponse = TPostOrderRequest & {
+export type OrderResponse = PostOrderRequest & {
   status: 0 | 1 | 2 | 3 | 4;
   cancellable: boolean;
 };
 
-export type TPostOrderResponse = {
+export type PostOrderResponse = {
   success: boolean;
   reason?: string;
-  order: TOrderResponse;
+  order: OrderResponse;
 };
 
-export type TGetOrdersResponse = {
+export type GetOrdersResponse = {
   success: boolean;
   reason?: string;
-  orders: Omit<TOrderResponse, 'option'>;
+  orders: Omit<OrderResponse, 'option'>;
 };
 
-export type TGetOrderResponse = {
+export type GetOrderResponse = {
   success: boolean;
   reason?: string;
-  order: Omit<TOrderResponse, 'option'>;
+  order: Omit<OrderResponse, 'option'>;
 };
 
-export type TCancelDeliveryResponse = {
+export type CancelDeliveryResponse = {
   success: boolean;
   reason?: string;
 };

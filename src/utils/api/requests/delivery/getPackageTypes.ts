@@ -1,7 +1,5 @@
 import { api } from '../../instance';
-import { TGetPackageTypesResponse } from './types';
+import { GetPackageTypesResponse } from './types';
 
-export const getPackageTypes = async (): Promise<TGetPackageTypesResponse> => {
-  const response = await api.get<TGetPackageTypesResponse>('/delivery/package/types');
-  return response.data;
-};
+export const getPackageTypes = async () =>
+  await api.get<GetPackageTypesResponse>('/delivery/package/types');

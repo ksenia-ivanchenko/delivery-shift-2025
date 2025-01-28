@@ -1,7 +1,5 @@
 import { api } from '../../instance';
-import { TPostOrderRequest, TPostOrderResponse } from './types';
+import { PostOrderRequest, PostOrderResponse } from './types';
 
-export const postOrder = async (params: TPostOrderRequest): Promise<TPostOrderResponse> => {
-  const response = await api.post<TPostOrderResponse>('/delivery/order', params);
-  return response.data;
-};
+export const postOrder = async (params: PostOrderRequest) =>
+  await api.post<PostOrderResponse>('/delivery/order', params);

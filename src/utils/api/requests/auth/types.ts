@@ -1,9 +1,9 @@
-export type TLoginData = {
+export type LoginData = {
   phone: string;
   code: number;
 };
 
-export type TUser = {
+export type User = {
   phone: string;
   firstname?: string;
   middlename?: string;
@@ -12,36 +12,36 @@ export type TUser = {
   city?: string;
 };
 
-export type TSignInResponse = {
+export type SignInResponse = {
   success: boolean;
-  user: TUser;
+  user: User;
   token: string;
   reason?: string;
 };
 
-export type TCreateOtpData = {
+export type CreateOtpData = {
   phone: string;
 };
 
-export type TCreateOtpResponse = {
+export type CreateOtpResponse = {
   success: boolean;
   reason: boolean;
   retryDelay: number;
 };
 
-export type TGetUserSessionResponse = {
+export type GetUserSessionResponse = {
   success: boolean;
-  user: TUser;
+  user: User;
   reason?: string;
 };
 
-export type TUpdateUserDataRequest = {
-  profile: Omit<TUser, 'phone'>;
+export type UpdateUserDataRequest = {
+  profile: Omit<User, 'phone'>;
   phone: string;
 };
 
-export type TUpdateUserDataResponse = {
+export type UpdateUserDataResponse = {
   success: boolean;
   reason?: string;
-  user: TUser;
+  user: User;
 };

@@ -1,7 +1,5 @@
 import { api } from '../../instance';
-import { TCreateOtpData, TCreateOtpResponse } from './types';
+import { CreateOtpData, CreateOtpResponse } from './types';
 
-export const createOtp = async (data: TCreateOtpData): Promise<TCreateOtpResponse> => {
-  const response = await api.post<TCreateOtpResponse>('/auth/otp', data);
-  return response.data;
-};
+export const createOtp = async (data: CreateOtpData) =>
+  await api.post<CreateOtpResponse>('/auth/otp', data);

@@ -1,9 +1,5 @@
 import { api } from '../../instance';
-import { TUpdateUserDataRequest, TUpdateUserDataResponse } from './types';
+import { UpdateUserDataRequest, UpdateUserDataResponse } from './types';
 
-export const updateUserData = async (
-  params: TUpdateUserDataRequest
-): Promise<TUpdateUserDataResponse> => {
-  const response = await api.patch<TUpdateUserDataResponse>('/users/profile', params);
-  return response.data;
-};
+export const updateUserData = async (params: UpdateUserDataRequest) =>
+  await api.patch<UpdateUserDataResponse>('/users/profile', params);
