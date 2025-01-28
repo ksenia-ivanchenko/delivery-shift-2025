@@ -1,4 +1,4 @@
-import { api } from '../../instance';
+import { api } from 'api';
 import { CancelDeliveryResponse } from './types';
 
 export const cancelDelivery = async (orderId: string) =>

@@ -3,9 +3,21 @@
     "target": "es2017",
     "jsx": "react-jsx", // позволяем использовать jsx без необходимости импортировать React вручную
     "moduleResolution": "node", // разрешаем импортировать модули
-    "lib": ["dom", "es2015"], // подключаем типы, связанные с браузерным API и поддержку типов ECMAScript 2015
+    "lib": ["dom", "es2020"], // подключаем типы, связанные с браузерным API и поддержку типов ECMAScript 2015
     "module": "esnext", // определяем модульный режим для работы ts с современными функциями и совместимость с ECMAScript Modules
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "api": ["utils/api/"],
+      "components": ["components/"],
+      "ui-kit": ["ui-kit/"],
+      "pages": ["pages/"],
+      "styles": ["styles/"],
+      "cookies": ["utils/cookies/"],
+      "store": ["utils/store/"],
+      "constants": ["utils/constants/"],
+      "helpers": ["utils/helpers/"]
+    }
   },
   "include": ["src"]
 }
