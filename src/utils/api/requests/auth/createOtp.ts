@@ -1,4 +1,4 @@
-import { api } from '../../instance';
+import { api } from 'api';
 import { CreateOtpData, CreateOtpResponse } from './types';
 
 export const createOtp = async (data: CreateOtpData) =>

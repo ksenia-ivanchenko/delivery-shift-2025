@@ -1,4 +1,4 @@
-import { api } from '../../instance';
+import { api } from 'api';
 import { GetOrderResponse } from './types';
 
 export const getOrder = async (orderId: string) =>
