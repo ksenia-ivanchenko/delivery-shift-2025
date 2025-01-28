@@ -1,5 +1,14 @@
-import { DropdownListProps } from './types';
 import styles from './dropdown-list.module.scss';
+
+export type Option = {
+  label: string;
+  value: any;
+};
+
+type DropdownListProps = {
+  options: Option[];
+  handleOptionClick: (option: Option) => void;
+};
 
 export const DropdownList = ({ options, handleOptionClick }: DropdownListProps) => (
   <ul className={styles.optionsList}>

@@ -1,7 +1,17 @@
-import { useState } from 'react';
-import { TabsProps } from './types';
+import { ReactNode, useState } from 'react';
 import styles from './tabs.module.scss';
 import clsx from 'clsx';
+
+export type Tab = {
+  id: string;
+  label: string;
+  content: ReactNode;
+};
+
+export type TabsProps = {
+  tabs: Tab[];
+  defaultActiveTabId?: string;
+};
 
 export const Tabs = ({ tabs, defaultActiveTabId }: TabsProps) => {
   const [activeTabId, setActiveTabId] = useState(defaultActiveTabId || tabs[0]?.id);

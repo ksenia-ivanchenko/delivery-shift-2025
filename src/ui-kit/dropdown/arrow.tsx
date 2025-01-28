@@ -1,9 +1,12 @@
-import { FC } from 'react';
-import { ArrowProps } from './types';
+import { ComponentProps } from 'react';
 import styles from './dropdown.module.scss';
 import clsx from 'clsx';
 
-export const Arrow = ({ isOpen }: ArrowProps) => (
+interface ArrowIconProps extends ComponentProps<'svg'> {
+  isOpen: boolean;
+}
+
+export const ArrowIcon = ({ isOpen }: ArrowIconProps) => (
   <svg
     width='14'
     height='8'

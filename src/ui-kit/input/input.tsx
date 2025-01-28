@@ -1,7 +1,13 @@
 import styles from './input.module.scss';
-import { InputProps } from './types';
 import clsx from 'clsx';
-import React from 'react';
+import React, { ComponentProps } from 'react';
+
+interface InputProps extends ComponentProps<'input'> {
+  error?: string;
+  id?: string;
+  label?: string;
+  hintMesage?: string;
+}
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ error, value, id, label, hintMesage, ...props }, ref) => (
