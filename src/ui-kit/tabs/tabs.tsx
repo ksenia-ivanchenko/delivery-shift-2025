@@ -1,9 +1,9 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { TabsProps } from './types';
 import styles from './tabs.module.scss';
 import clsx from 'clsx';
 
-export const Tabs: FC<TabsProps> = ({ tabs, defaultActiveTabId }) => {
+export const Tabs = ({ tabs, defaultActiveTabId }: TabsProps) => {
   const [activeTabId, setActiveTabId] = useState(defaultActiveTabId || tabs[0]?.id);
   const handleTabClick = (tabId: string) => {
     setActiveTabId(tabId);

@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DropdownProps } from './types';
 import styles from './dropdown.module.scss';
 import { Button } from '../button';
@@ -7,15 +7,15 @@ import clsx from 'clsx';
 import { Option } from '../dropdown-list/types';
 import { DropdownList } from '../dropdown-list';
 
-export const Dropdown: FC<DropdownProps> = ({
+export const Dropdown = ({
   icon,
   options,
   defaultSelectedOption,
   onSelect,
   placeholder,
   suggestedOptions,
-  label,
-}) => {
+  label
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -57,17 +57,14 @@ export const Dropdown: FC<DropdownProps> = ({
       </div>
 
       {isOpen ? (
-        <DropdownList
-          options={options}
-          handleOptionClick={handleOptionClick}
-        />
+        <DropdownList options={options} handleOptionClick={handleOptionClick} />
       ) : (
         <div className={styles.suggestedOptions}>
           {suggestedOptions.map((option, index) => (
             <Button
               key={index}
-              htmlType='button'
-              style={{ variant: 'link', type: 'tertiary' }}
+              type='button'
+              styleType={{ variant: 'link', type: 'tertiary' }}
               onClick={() => handleOptionClick(option)}
             >
               {option.label}
