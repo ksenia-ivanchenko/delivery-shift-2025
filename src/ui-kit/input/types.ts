@@ -1,15 +1,15 @@
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
-export interface InputProps {
-  placeholder: string;
+export interface InputProps extends ComponentProps<'input'> {
+  // placeholder: string;
   error?: string;
-  inputType?: string;
-  value?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
+  // inputType?: string;
+  // value?: string | number;
+  // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  // disabled?: boolean;
   id?: string;
   label?: string;
   hintMesage?: string;
-  ref?: ReactNode;
+  // ref?: ReactNode;
 }

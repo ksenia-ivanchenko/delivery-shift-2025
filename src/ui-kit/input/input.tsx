@@ -4,10 +4,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    { placeholder, error, inputType, value, onChange, onKeyPress, disabled, id, label, hintMesage },
-    ref
-  ) => (
+  ({ error, value, id, label, hintMesage, ...props }, ref) => (
     <div className={styles.container}>
       <label htmlFor={id} className={styles.label}>
         {label}
@@ -16,14 +13,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={clsx(styles.input, {
           [styles.invalid]: error
         })}
-        placeholder={placeholder}
-        type={inputType}
         value={value}
-        disabled={disabled ? true : false}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
         ref={ref}
         id={id}
+        {...props}
       />
       {hintMesage && !error && !value && <span className={styles.hint}>{hintMesage}</span>}
 
