@@ -1,1 +1,2 @@
-export * from './getDeliveryPoints';
+export * from './auth';
+export * from './delivery';
