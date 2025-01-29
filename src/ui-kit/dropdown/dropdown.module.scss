@@ -17,17 +17,17 @@
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 12px;
-  border: $input-border;
+  border: $border-light;
   border-radius: $input-border-radius;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: $input-disabled-bg;
+    background-color: $bg-secondary;
   }
 
   &.open {
-    background-color: $input-disabled-bg;
+    background-color: $bg-secondary;
   }
 }
 
@@ -38,11 +38,11 @@
 
 .selectedOption {
   flex-grow: 1;
-  color: $input-text-color;
+  color: $text-primary;
 }
 
 .placeholder {
-  color: $input-placeholder-text-color;
+  color: $text-tertiary;
 }
 
 .arrow {
