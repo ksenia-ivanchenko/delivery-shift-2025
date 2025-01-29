@@ -22,21 +22,21 @@
 .label {
   font-size: $input-decor-font-size;
   line-height: $input-decor-line-height;
-  color: $input-label-text-color;
+  color: $text-primary;
 }
 
 .input {
   transition: all linear 150ms;
   padding: 12px;
   border: none;
-  outline: $input-border;
+  outline: $border-light;
   border-radius: $input-border-radius;
   font-weight: $input-font-weight;
   font-size: $input-placeholder-font-size;
   line-height: $input-placeholder-line-height;
 
   &::placeholder {
-    color: $input-placeholder-text-color;
+    color: $text-tertiary;
     font-size: $input-placeholder-font-size;
     line-height: $input-placeholder-line-height;
   }
@@ -46,27 +46,27 @@
   }
 
   &:focus-visible {
-    outline: $input-focus-border;
+    outline: $border-indicator-focused;
   }
 
   &:disabled {
-    background-color: $input-disabled-bg;
+    background-color: $bg-secondary;
   }
 
   &.invalid {
-    outline: $input-error-border;
+    outline: $border-indicator-error;
   }
 }
 
 .hint {
-  color: $input-hint-message-text-color;
+  color: $text-tertiary;
   font-size: $input-decor-font-size;
   line-height: $input-decor-line-height;
   margin-block-start: 3px;
 }
 
 .error {
-  color: $input-error-message-text-color;
+  color: $text-error;
   font-size: $input-decor-font-size;
   line-height: $input-decor-line-height;
   height: 0;

@@ -20,11 +20,11 @@
   align-items: center;
   gap: 20px;
   text-decoration: none;
-  color: $secondary-button-text-color;
+  color: $text-secondary;
 }
 
 .linkActive {
-  color: $primary-button-contained-bg;
+  color: $bg-brand;
 }
 
 .logoText {

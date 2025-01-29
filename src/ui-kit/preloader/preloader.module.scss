@@ -3,6 +3,8 @@
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  block-size: 100%;
+  inline-size: 100%;
 
   &_circle {
     animation: spin 0.75s infinite linear;

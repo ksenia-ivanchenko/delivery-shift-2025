@@ -1,5 +1,6 @@
 import { AuthOtp, AuthPhone } from 'components';
 import { useState } from 'react';
+import styles from './auth-page.module.scss'
 
 export const AuthPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -18,5 +19,5 @@ export const AuthPage = () => {
     }
   };
 
-  return <main>{renderStep()}</main>;
+  return <main className={styles.main}>{renderStep()}</main>;
 };
