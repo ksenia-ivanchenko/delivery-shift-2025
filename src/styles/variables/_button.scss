@@ -8,6 +8,17 @@ $button-border-radius: 16px;
 $button-inline-padding: 32px;
 $button-block-padding: 16px;
 
+$bg-brand: rgba(25, 117, 255, 1);
+$bg-hover-primary: rgba(0, 82, 204, 1);
+$bg-brand-extra-light: rgba(204, 224, 255, 1);
+$bg-primary: rgba(255, 255, 255, 1);
+$bg-secondary: rgba(243, 244, 246, 1);
+$bg-tertiary: rgba(249, 250, 251, 1);
+$brand-background-primary: rgba(240, 246, 255, 1);
+$brand-hover: rgba(0, 82, 204, 1);
+$brand-light: rgba(204, 224, 255, 1);
+
+//TODO: поменять в коде названия переменных на человеческие как в фигме
 $primary-button-contained-bg: rgba(25, 117, 255, 1);
 $primary-button-contained-hover-bg: rgba(0, 82, 204, 1);
 $primary-button-contained-focus-bg: rgba(25, 117, 255, 1);
