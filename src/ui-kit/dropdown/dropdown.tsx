@@ -1,10 +1,12 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
+import clsx from 'clsx';
+
 import styles from './dropdown.module.scss';
 import { Button } from '../button';
-import { ArrowIcon } from './arrow';
-import clsx from 'clsx';
+import { ArrowIcon } from 'ui-kit';
 import { Option } from '../dropdown-list/dropdown-list';
 import { DropdownList } from '../dropdown-list';
+import { useDropdown } from 'hooks';
 
 type DropdownProps = {
   icon?: ReactNode;
@@ -25,48 +27,33 @@ export const Dropdown = ({
   suggestedOptions,
   label
 }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdown = useDropdown(onSelect);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleOptionClick = (option: Option) => {
-    setSelectedOption(option);
-    onSelect(option.value);
-    setIsOpen(false);
-  };
+    if (defaultSelectedOption && dropdown.selectedOption === undefined) {
+      dropdown.handleOptionClick(defaultSelectedOption);
+    }
+  }, [defaultSelectedOption, dropdown.selectedOption]);
 
   return (
-    <div className={styles.dropdownContainer} ref={dropdownRef}>
+    <div className={styles.dropdownContainer} ref={dropdown.dropdownRef}>
       {label && <span className={styles.label}>{label}</span>}
 
-      <div className={clsx(styles.selectBox, isOpen && styles.open)} onClick={toggleDropdown}>
+      <div
+        className={clsx(styles.selectBox, dropdown.isOpen && styles.open)}
+        onClick={dropdown.toggleDropdown}
+      >
         {icon && <div className={styles.icon}>{icon}</div>}
-        <span className={clsx(styles.selectedOption, !selectedOption && styles.placeholder)}>
-          {selectedOption ? selectedOption.label : placeholder}
+        <span
+          className={clsx(styles.selectedOption, !dropdown.selectedOption && styles.placeholder)}
+        >
+          {dropdown.selectedOption ? dropdown.selectedOption.label : placeholder}
         </span>
-        <ArrowIcon isOpen={isOpen} />
+        <ArrowIcon isOpen={dropdown.isOpen} />
       </div>
 
-      {isOpen ? (
-        <DropdownList options={options} handleOptionClick={handleOptionClick} />
+      {dropdown.isOpen ? (
+        <DropdownList options={options} handleOptionClick={dropdown.handleOptionClick} />
       ) : (
         <div className={styles.suggestedOptions}>
           {suggestedOptions.map((option, index) => (
@@ -74,7 +61,7 @@ export const Dropdown = ({
               key={index}
               type='button'
               styleType={{ variant: 'link', type: 'tertiary' }}
-              onClick={() => handleOptionClick(option)}
+              onClick={() => dropdown.handleOptionClick(option)}
             >
               {option.label}
             </Button>

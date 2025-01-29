@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  block-size: 100vh;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+}

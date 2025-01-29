@@ -1,0 +1,59 @@
+@import 'styles';
+
+.dropdownContainer {
+  position: relative;
+  min-inline-size: 320px;
+  min-block-size: 90px;
+}
+
+.label {
+  line-height: $main-line-height;
+  display: block;
+  margin-block-end: 5px;
+  font-size: 14px;
+}
+
+.selectBox {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border: $border-light;
+  border-radius: $input-border-radius;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    background-color: $bg-secondary;
+  }
+
+  &.open {
+    background-color: $bg-secondary;
+  }
+}
+
+.selectedOption {
+  flex-grow: 1;
+  color: $text-primary;
+}
+
+.placeholder {
+  color: $text-tertiary;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-primary;
+  padding: 8px;
+  gap: 8px;
+  border-radius: 8px;
+  position: absolute;
+  inline-size: 100%;
+  max-block-size: 150px;
+  overflow-y: auto;
+}
+
+.container {
+  background-color: $bg-primary;
+}

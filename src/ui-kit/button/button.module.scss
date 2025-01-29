@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import 'styles';
 
 .button {
   font-family: $main-font-family;
@@ -6,6 +6,7 @@
   padding-block: $button-block-padding;
   border-radius: $button-border-radius;
   border: none;
+  inline-size: 100%;
   line-height: 24px;
   max-inline-size: 500px;
   max-block-size: 80px;
@@ -21,45 +22,45 @@
 
   &.primary {
     &.contained {
-      background-color: $primary-button-contained-bg;
+      background-color: $bg-brand;
       font-weight: $contained-button-font-weigth;
-      color: $primary-button-contained-text-color;
+      color: $text-invert;
 
       &:hover:enabled {
-        background-color: $primary-button-contained-hover-bg;
+        background-color: $brand-hover;
       }
 
       &:focus-visible {
-        outline: $primary-button-contained-focus-border;
+        outline: $border-focused-alternative;
       }
 
       &:disabled {
-        background-color: $primary-button-contained-disabled-bg;
+        background-color: $bg-brand-extra-light;
       }
     }
 
     &.text {
-      background-color: $primary-button-text-bg;
+      background-color: $text-invert;
       font-weight: $text-button-font-weigth;
-      color: $primary-button-text-text-color;
+      color: $text-brand;
 
       &:hover:enabled {
-        background-color: $primary-button-text-hover-bg;
+        background-color: $brand-background-primary;
       }
 
       &:focus-visible {
-        outline: $primary-button-text-focus-border;
+        outline: $border-focused-alternative;
       }
 
       &:disabled {
-        color: $primary-button-text-disabled-text-color;
-        outline: $primary-button-text-disabled-border;
+        color: $brand-light;
+        outline: $border-focused-alternative;
       }
     }
 
     &.link {
-      background-color: $primary-button-link-bg;
-      color: $primary-button-link-color;
+      background-color: transparent;
+      color: $bg-hover-primary;
       font-weight: $link-button-font-weigth;
       padding: 0;
 
@@ -70,60 +71,60 @@
         bottom: -2px;
         width: 100%;
         height: 2px;
-        background: $primary-button-link-color;
+        background: $bg-brand;
         transition: all 0.3s ease;
       }
 
       &:hover:enabled {
-        color: $primary-button-link-hover-color;
+        color: $bg-hover-primary;
 
         span::after {
-          background: $primary-button-link-hover-color;
+          background: $bg-hover-primary;
         }
       }
 
       &:focus-visible {
-        color: $primary-button-link-focus-color;
+        color: $bg-brand;
 
         span::after {
-          background: $primary-button-link-focus-color;
+          background: $bg-brand;
           width: 90%;
           left: 5%;
         }
       }
 
       &:disabled {
-        color: $primary-button-link-disabled-color;
+        color: $brand-light;
 
         span::after {
-          background: $primary-button-link-disabled-color;
+          background: $brand-light;
         }
       }
     }
   }
 
   &.secondary {
-    background-color: $secondary-button-contained-bg;
-    color: $secondary-button-text-color;
+    background-color: $bg-primary;
+    color: $text-secondary;
 
     &:disabled {
-      color: $secondary-button-disabled-text-color;
+      color: $text-tertiary;
     }
 
     &.contained {
-      outline: $secondary-button-contained-border;
+      outline: $border-light;
       font-weight: $contained-button-font-weigth;
 
       &:hover:enabled {
-        background-color: $secondary-button-contained-hover-bg;
+        background-color: $bg-tertiary;
       }
 
       &:focus-visible {
-        outline: $secondary-button-contained-focus-border;
+        outline: $border-light;
       }
 
       &:disabled {
-        outline: $secondary-button-contained-disabled-border;
+        outline: $border-extra-light;
       }
     }
 
@@ -135,13 +136,14 @@
       }
 
       &:focus-visible {
-        outline: $secondary-button-text-focus-border;
+        outline: $border-light;
       }
     }
 
     &.link {
       font-weight: $link-button-font-weigth;
       padding: 0;
+      background-color: transparent;
 
       span::after {
         content: '';
@@ -150,48 +152,48 @@
         bottom: -2px;
         width: 100%;
         height: 2px;
-        background: $secondary-button-text-color;
+        background: $text-secondary;
         transition: all 0.3s ease;
       }
 
       &:hover:enabled {
-        color: $secondary-button-link-hover-color;
+        color: $text-primary;
 
         span::after {
-          background: $secondary-button-link-hover-color;
+          background: $text-primary;
         }
       }
 
       &:focus-visible {
-        color: $secondary-button-text-color;
+        color: $text-secondary;
 
         span::after {
-          background: $secondary-button-text-color;
+          background: $text-secondary;
           width: 90%;
           left: 5%;
         }
       }
 
       &:disabled {
-        color: $secondary-button-disabled-text-color;
+        color: $text-tertiary;
 
         span::after {
-          background: $secondary-button-disabled-text-color;
+          background: $text-tertiary;
         }
       }
     }
   }
 
   &.tertiary {
-    color: $tertiary-button-link-color;
-    background-color: $secondary-button-contained-bg;
+    color: $text-quartenery;
     font-weight: $tertiary-link-button-font-weigth;
     text-decoration: underline;
     text-underline-offset: 4px;
     padding: 0;
+    background-color: transparent;
 
     &:hover:enabled {
-      color: $tertiary-button-link-hover-color;
+      color: $text-tertiary;
     }
   }
 }

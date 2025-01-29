@@ -1,0 +1,20 @@
+@import 'styles';
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.again_button {
+  inline-size: 328px;
+}
+
+.again {
+  margin-block-start: 24px;
+  color: $text-quartenery;
+}
+
+.another_phone {
+  inline-size: 328px;
+  font-size: 12px;
+}

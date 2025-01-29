@@ -1,4 +1,4 @@
-import { api } from '../../instance';
+import { api } from 'api';
 import { UpdateUserDataRequest, UpdateUserDataResponse } from './types';
 
 export const updateUserData = async (params: UpdateUserDataRequest) =>

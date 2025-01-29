@@ -1,21 +1,85 @@
-import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RootPage } from './pages/root';
+import { useEffect } from 'react';
 
-import { ROUTES } from './utils/constants/router';
-import { store } from './utils/redux/store';
+import { Layout, ProtectedRoute } from 'components';
+import { checkUserAuth, getDeliveryPoints, getPackageTypes, useDispatch } from 'store';
+import { ROUTES } from 'constants';
+import {
+  AuthPage,
+  CheckoutPage,
+  HistoryPage,
+  MainPage,
+  OrderDetailsPage,
+  ProfilePage
+} from 'pages';
 
 const router = createBrowserRouter([
   {
-    path: ROUTES.ROOT,
-    element: <RootPage />
+    path: ROUTES.MAIN,
+    element: (
+      <Layout>
+        <MainPage />
+      </Layout>
+    )
+  },
+  {
+    path: ROUTES.PROFILE,
+    element: (
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <ProfilePage />
+        </ProtectedRoute>
+      </Layout>
+    )
+  },
+  {
+    path: ROUTES.ORDERS,
+    element: (
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <HistoryPage />
+        </ProtectedRoute>
+      </Layout>
+    )
+  },
+  {
+    path: ROUTES.ORDER_DETAILS,
+    element: (
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <OrderDetailsPage />
+        </ProtectedRoute>
+      </Layout>
+    )
+  },
+  {
+    path: ROUTES.CHECKOUT,
+    element: (
+      <Layout>
+        <CheckoutPage />
+      </Layout>
+    )
+  },
+  {
+    path: ROUTES.AUTH,
+    element: (
+      <Layout>
+        <ProtectedRoute type='unauth'>
+          <AuthPage />
+        </ProtectedRoute>
+      </Layout>
+    )
   }
 ]);
 
 export function App() {
-  return (
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserAuth());
+    dispatch(getDeliveryPoints());
+    dispatch(getPackageTypes());
+  }, []);
+
+  return <RouterProvider router={router} />;
 }

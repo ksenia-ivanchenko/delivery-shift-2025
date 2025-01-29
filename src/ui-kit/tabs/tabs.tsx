@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
-import styles from './tabs.module.scss';
 import clsx from 'clsx';
+
+import styles from './tabs.module.scss';
 
 export type Tab = {
   id: string;
@@ -25,6 +26,7 @@ export const Tabs = ({ tabs, defaultActiveTabId }: TabsProps) => {
       <div className={styles.tabHeaders}>
         {tabs.map((tab) => (
           <button
+            type='button'
             key={tab.id}
             className={clsx(styles.tabButton, tab.id === activeTabId && styles.active)}
             onClick={() => handleTabClick(tab.id)}

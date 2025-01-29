@@ -1,0 +1,41 @@
+@import 'styles';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: $content-inline-padding;
+  padding-block: 20px;
+  border-bottom: $border-light;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: $text-secondary;
+}
+
+.linkActive {
+  color: $bg-brand;
+}
+
+.logoText {
+  max-width: 60px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: -10px;
+}
+
+.exit {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}

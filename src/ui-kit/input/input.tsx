@@ -1,6 +1,7 @@
-import styles from './input.module.scss';
 import clsx from 'clsx';
 import React, { ComponentProps } from 'react';
+
+import styles from './input.module.scss';
 
 interface InputProps extends ComponentProps<'input'> {
   error?: string;
