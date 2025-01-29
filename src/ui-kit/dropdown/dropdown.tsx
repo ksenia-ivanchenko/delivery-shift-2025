@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from './dropdown.module.scss';
 import { Button } from '../button';
-import { ArrowIcon } from './arrow';
+import { ArrowIcon } from 'ui-kit';
 import clsx from 'clsx';
 import { Option } from '../dropdown-list/dropdown-list';
 import { DropdownList } from '../dropdown-list';

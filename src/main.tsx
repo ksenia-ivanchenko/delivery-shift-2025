@@ -5,9 +5,10 @@ import { App } from './App';
 import './index.css';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import { Layout } from 'components';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+      <App />
   </Provider>
 );

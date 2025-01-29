@@ -1,8 +1,7 @@
-import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { ProtectedRoute } from 'components';
-import { checkUserAuth, store, useDispatch } from 'store';
+import { Layout, ProtectedRoute } from 'components';
+import { checkUserAuth, useDispatch } from 'store';
 import {
   AuthPage,
   CheckoutPage,
@@ -17,42 +16,58 @@ import { useEffect } from 'react';
 const router = createBrowserRouter([
   {
     path: ROUTES.MAIN,
-    element: <MainPage />
+    element: (
+      <Layout>
+        <MainPage />
+      </Layout>
+    )
   },
   {
     path: ROUTES.PROFILE,
     element: (
-      <ProtectedRoute type='auth'>
-        <ProfilePage />
-      </ProtectedRoute>
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <ProfilePage />
+        </ProtectedRoute>
+      </Layout>
     )
   },
   {
     path: ROUTES.ORDERS,
     element: (
-      <ProtectedRoute type='auth'>
-        <HistoryPage />
-      </ProtectedRoute>
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <HistoryPage />
+        </ProtectedRoute>
+      </Layout>
     )
   },
   {
     path: ROUTES.DETAILS,
     element: (
-      <ProtectedRoute type='auth'>
-        <OrderDetailsPage />
-      </ProtectedRoute>
+      <Layout>
+        <ProtectedRoute type='auth'>
+          <OrderDetailsPage />
+        </ProtectedRoute>
+      </Layout>
     )
   },
   {
     path: ROUTES.DETAILS,
-    element: <CheckoutPage />
+    element: (
+      <Layout>
+        <CheckoutPage />
+      </Layout>
+    )
   },
   {
     path: ROUTES.AUTH,
     element: (
-      <ProtectedRoute type='unauth'>
-        <AuthPage />
-      </ProtectedRoute>
+      <Layout>
+        <ProtectedRoute type='unauth'>
+          <AuthPage />
+        </ProtectedRoute>
+      </Layout>
     )
   }
 ]);

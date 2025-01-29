@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserState } from './types';
 import { User } from 'api';
 import { checkUserAuth, signIn } from './thunks';
+import { deleteCookie } from 'cookies';
 
 const initialState: UserState = {
   user: {
@@ -35,6 +36,7 @@ export const userSlice = createSlice({
       };
       state.authorized = false;
       state.requestError = '';
+      deleteCookie('accessToken');
     },
     setAuthorized: (state) => {
       state.authorized = true;
@@ -65,9 +67,18 @@ export const userSlice = createSlice({
       })
       .addCase(checkUserAuth.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.user = action.payload
+          ? action.payload
+          : {
+              phone: '',
+              firstname: '',
+              middlename: '',
+              lastname: '',
+              email: '',
+              city: ''
+            };
         state.requestError = null;
-        state.authorized = true;
+        state.authorized = action.payload ? true : false;
       })
       .addCase(checkUserAuth.rejected, (state, action) => {
         state.loading = false;
