@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const ProfileIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const ProfileIcon = (props: ComponentProps<'svg'>) => (
   <svg
     width='17'
     height='16'

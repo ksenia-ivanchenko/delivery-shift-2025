@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import styles from './default-item.module.scss';
+
 import { Package } from 'api';
+import styles from './default-item.module.scss';
 
 type DefaultItemProps = {
   item: Package;

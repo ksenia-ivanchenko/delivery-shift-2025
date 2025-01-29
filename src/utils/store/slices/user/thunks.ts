@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { getUserSession, LoginData, signInApi } from 'api';
 import { deleteCookie, getCookie } from 'cookies';
-import { setUser } from 'store';
 
 export const signIn = createAsyncThunk(
   'user/signIn',

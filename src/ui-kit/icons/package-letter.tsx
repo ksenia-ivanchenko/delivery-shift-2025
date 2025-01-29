@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const PackageLetterIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const PackageLetterIcon = (props: ComponentProps<'svg'>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' {...props}>
     <path fill='url(#a)' d='M6.383 26.478V0l35.609 10.5v26.478z' />
     <g clipPath='url(#b)'>

@@ -2,7 +2,7 @@ export const ROUTES = {
   MAIN: '/',
   PROFILE: '/profile',
   ORDERS: '/orders',
-  DETAILS: '/orders/:id',
+  ORDER_DETAILS: '/orders/:id',
   CHECKOUT: '/checkout',
   AUTH: '/auth'
 };

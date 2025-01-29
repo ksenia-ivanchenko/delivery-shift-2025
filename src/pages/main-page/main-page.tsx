@@ -1,6 +1,6 @@
 import { BoxIcon, QRCode } from 'ui-kit';
-import styles from './main-page.module.scss';
 import { Calculator } from 'components';
+import styles from './main-page.module.scss';
 
 export const MainPage = () => {
   return (

@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const LocationIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const LocationIcon = (props: ComponentProps<'svg'>) => (
   <svg
     width='16'
     height='19'

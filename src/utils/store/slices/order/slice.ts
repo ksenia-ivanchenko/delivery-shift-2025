@@ -1,6 +1,7 @@
-import { DeliveryType } from 'utils/api';
-import { OrderState } from './types';
 import { createSlice } from '@reduxjs/toolkit';
+
+import { DeliveryType } from 'api';
+import { OrderState } from './types';
 
 const initialState: OrderState = {
   senderPoint: {

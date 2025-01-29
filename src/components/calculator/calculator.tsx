@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, Dropdown, LocationIcon, PlaneIcon } from 'ui-kit';
-import styles from './calculator.module.scss';
 import { calculateDelivery, useDispatch, useSelector } from 'store';
 import { PackageTypeDropdown } from 'components';
 import { hasZeroValue } from 'helpers';
 import { useSelectCalcParams } from 'hooks';
-import { useNavigate } from 'react-router-dom';
+import styles from './calculator.module.scss';
 
 export const Calculator = () => {
   const dispatch = useDispatch();

@@ -1,11 +1,12 @@
 import { AuthForm } from 'components';
-import styles from './auth-otp.module.scss';
-import { resetUser, signIn, useDispatch, useSelector } from 'store';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+
+import { resetUser, signIn, useDispatch, useSelector } from 'store';
 import { Button, Input, Preloader } from 'ui-kit';
 import { allowedKeys, formatPhoneNumber, isNumber, validateOtp } from 'helpers';
 import { createOtp } from 'api';
-import { useNavigate } from 'react-router-dom';
+import styles from './auth-otp.module.scss';
 
 type AuthOtpProps = {
   goToPrevStep: () => void;

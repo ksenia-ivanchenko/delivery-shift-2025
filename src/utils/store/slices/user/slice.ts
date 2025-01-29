@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { UserState } from './types';
 import { User } from 'api';
 import { checkUserAuth, signIn } from './thunks';
-import { deleteCookie } from 'cookies';
 
 const initialState: UserState = {
   user: {
@@ -36,7 +36,6 @@ export const userSlice = createSlice({
       };
       state.authorized = false;
       state.requestError = '';
-      deleteCookie('accessToken');
     },
     setAuthorized: (state) => {
       state.authorized = true;

@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const LetterIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const LetterIcon = (props: ComponentProps<'svg'>) => (
   <svg
     width='18'
     height='14'

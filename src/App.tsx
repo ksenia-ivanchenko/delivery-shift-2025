@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { Layout, ProtectedRoute } from 'components';
 import { checkUserAuth, getDeliveryPoints, getPackageTypes, useDispatch } from 'store';
+import { ROUTES } from 'constants';
 import {
   AuthPage,
   CheckoutPage,
@@ -10,8 +12,6 @@ import {
   OrderDetailsPage,
   ProfilePage
 } from 'pages';
-import { ROUTES } from 'constants';
-import { useEffect } from 'react';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: ROUTES.DETAILS,
+    path: ROUTES.ORDER_DETAILS,
     element: (
       <Layout>
         <ProtectedRoute type='auth'>

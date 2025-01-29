@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+
 import { Input } from 'ui-kit';
 import styles from './input-size.module.scss';
 

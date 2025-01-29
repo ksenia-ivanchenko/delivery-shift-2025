@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const BoxIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const BoxIcon = (props: ComponentProps<'svg'>) => (
   <svg
     width='56'
     height='56'

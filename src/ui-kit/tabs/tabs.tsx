@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
-import styles from './tabs.module.scss';
 import clsx from 'clsx';
+
+import styles from './tabs.module.scss';
 
 export type Tab = {
   id: string;

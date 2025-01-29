@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const PackageM = ({ ...props }: ComponentProps<'svg'>) => (
+export const PackageM = (props: ComponentProps<'svg'>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width='48' height='38' fill='none' {...props}>
     <path
       fill='#DAAE87'

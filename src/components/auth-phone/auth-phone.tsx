@@ -1,5 +1,6 @@
-import { AuthForm } from 'components';
 import { useEffect, useRef, useState } from 'react';
+
+import { AuthForm } from 'components';
 import { Input, Preloader } from 'ui-kit';
 import { createOtp } from 'api';
 import { allowedKeys, formatPhoneNumber, isNumber, validatePhone } from 'helpers';

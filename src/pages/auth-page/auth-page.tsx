@@ -1,5 +1,6 @@
-import { AuthOtp, AuthPhone } from 'components';
 import { useState } from 'react';
+
+import { AuthOtp, AuthPhone } from 'components';
 
 export const AuthPage = () => {
   const [currentStep, setCurrentStep] = useState(1);

@@ -1,8 +1,10 @@
-import { resetUser, useDispatch, useSelector } from 'store';
-import styles from './header.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { BoxIcon, ExitIcon, HistoryIcon, ProfileIcon } from 'ui-kit';
 import clsx from 'clsx';
+
+import { resetUser, useDispatch, useSelector } from 'store';
+import { BoxIcon, ExitIcon, HistoryIcon, ProfileIcon } from 'ui-kit';
+import { deleteCookie } from 'cookies';
+import styles from './header.module.scss';
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ export const Header = () => {
   const handleExit = () => {
     if (authorized) {
       dispatch(resetUser());
+      deleteCookie('accessToken');
     } else {
       navigate('/auth');
     }

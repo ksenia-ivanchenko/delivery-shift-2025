@@ -1,5 +1,7 @@
 import { ComponentProps } from 'react';
-import styles from './icons.module.scss';import clsx from 'clsx';
+import clsx from 'clsx';
+
+import styles from './icons.module.scss';
 
 interface ArrowIconProps extends ComponentProps<'svg'> {
   isOpen: boolean;

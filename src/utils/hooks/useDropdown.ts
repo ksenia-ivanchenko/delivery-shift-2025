@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+
 import { Option } from 'ui-kit/dropdown-list/dropdown-list';
 
 export const useDropdown = (onSelect: (option: Option) => void) => {

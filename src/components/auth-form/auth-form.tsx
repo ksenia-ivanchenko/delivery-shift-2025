@@ -1,6 +1,7 @@
 import { ComponentProps, ReactNode } from 'react';
-import styles from './auth-form.module.scss';
+
 import { Button } from 'ui-kit';
+import styles from './auth-form.module.scss';
 
 interface AuthFormProps extends ComponentProps<'form'> {
   onSubmit: () => void;

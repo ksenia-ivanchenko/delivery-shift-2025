@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-export const HistoryIcon = ({ ...props }: ComponentProps<'svg'>) => (
+export const HistoryIcon = (props: ComponentProps<'svg'>) => (
   <svg
     width='21'
     height='20'

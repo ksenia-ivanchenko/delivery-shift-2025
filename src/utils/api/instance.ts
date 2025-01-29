@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { getCookie } from 'cookies';
 
 export const api = axios.create({

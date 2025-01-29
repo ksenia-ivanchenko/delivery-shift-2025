@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import styles from './dropdown.module.scss';
+
 import { ArrowIcon, PackageLetterIcon, PackageM, PackageS, PackageXS, Tabs } from 'ui-kit';
 import { InputSize } from '../input-size';
 import { useSelector } from 'store';
 import { DefaultItem } from '../default-item';
 import { useDropdown, useInputPackageSize } from 'hooks';
 import { selectText } from 'helpers';
+import styles from './dropdown.module.scss';
 
 // не нашла в фигме все иконки :(
 const Icons = {
@@ -26,8 +27,7 @@ export const PackageTypeDropdown = ({ onSelect, placeholder }) => {
     toggleDropdown,
     handleOptionClick
   } = useDropdown(onSelect);
-  const { handleLengthInput, handleWidthInput, handleHeightInput, handleWeightInput } =
-    useInputPackageSize(setSelectedOption, onSelect);
+  const handlers = useInputPackageSize(setSelectedOption, onSelect);
 
   const tabs = [
     {
@@ -51,10 +51,10 @@ export const PackageTypeDropdown = ({ onSelect, placeholder }) => {
       label: 'Точные',
       content: (
         <div className={styles.content}>
-          <InputSize param='Длина' onChange={handleLengthInput} />
-          <InputSize param='Ширина' onChange={handleWidthInput} />
-          <InputSize param='Высота' onChange={handleHeightInput} />
-          <InputSize param='Вес' onChange={handleWeightInput} />
+          <InputSize param='Длина' onChange={handlers.handleLengthInput} />
+          <InputSize param='Ширина' onChange={handlers.handleWidthInput} />
+          <InputSize param='Высота' onChange={handlers.handleHeightInput} />
+          <InputSize param='Вес' onChange={handlers.handleWeightInput} />
         </div>
       )
     }
