@@ -1,8 +1,6 @@
 import { ComponentProps } from 'react';
 
-interface ExitIconProps extends ComponentProps<'svg'> {}
-
-export const ExitIcon = ({ ...props }: ExitIconProps) => (
+export const ExitIcon = ({ ...props }: ComponentProps<'svg'>) => (
   <svg
     width='18'
     height='18'

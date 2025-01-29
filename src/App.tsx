@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { Layout, ProtectedRoute } from 'components';
-import { checkUserAuth, useDispatch } from 'store';
+import { checkUserAuth, getDeliveryPoints, getPackageTypes, useDispatch } from 'store';
 import {
   AuthPage,
   CheckoutPage,
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: ROUTES.DETAILS,
+    path: ROUTES.CHECKOUT,
     element: (
       <Layout>
         <CheckoutPage />
@@ -77,6 +77,8 @@ export function App() {
 
   useEffect(() => {
     dispatch(checkUserAuth());
+    dispatch(getDeliveryPoints());
+    dispatch(getPackageTypes());
   }, []);
 
   return <RouterProvider router={router} />;

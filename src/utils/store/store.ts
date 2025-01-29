@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { userSlice } from './slices';
+import { deliverySlice, userSlice } from './slices';
 import {
   TypedUseSelectorHook,
   useDispatch as dispatchHook,
@@ -7,7 +7,8 @@ import {
 } from 'react-redux';
 
 export const rootReducer = combineReducers({
-  [userSlice.name]: userSlice.reducer
+  [userSlice.name]: userSlice.reducer,
+  [deliverySlice.name]: deliverySlice.reducer
 });
 
 export const store = configureStore({

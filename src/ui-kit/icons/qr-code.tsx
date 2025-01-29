@@ -1,8 +1,6 @@
 import { ComponentProps } from 'react';
 
-interface QRCodeProps extends ComponentProps<'svg'> {}
-
-export const QRCode = ({ ...props }: QRCodeProps) => (
+export const QRCode = ({ ...props }: ComponentProps<'svg'>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='none' {...props}>
     <g clipPath='url(#a)'>
       <g fill='#000' clipPath='url(#b)'>

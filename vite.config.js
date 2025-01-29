@@ -16,6 +16,8 @@ export default defineConfig({
       cookies: path.resolve(__dirname, 'src/utils/cookies'),
       store: path.resolve(__dirname, 'src/utils/store'),
       helpers: path.resolve(__dirname, 'src/utils/helpers'),
-      constants: path.resolve(__dirname, 'src/utils/constants'),    }
+      constants: path.resolve(__dirname, 'src/utils/constants'),
+      hooks: path.resolve(__dirname, 'src/utils/hooks')
+    }
   }
 });

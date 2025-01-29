@@ -1,9 +1,13 @@
-@import '../../styles/';
+@import 'styles';
 
 .tabsContainer {
   display: flex;
   flex-direction: column;
   min-inline-size: 330px;
+  user-select: none;
+  inline-size: 100%;
+  display: block;
+  background-color: $bg-primary;
 }
 
 .tabHeaders {
@@ -11,6 +15,9 @@
   padding: 2px;
   background-color: $tabs-bg;
   border-radius: 16px;
+  inline-size: 100%;
+  position: absolute;
+  top: 70px;
 }
 
 .tabButton {
@@ -25,4 +32,10 @@
     background-color: #fff;
     color: $tabs-active-text-color;
   }
+}
+
+.tabContent {
+  inline-size: 100%;
+  position: absolute;
+  top: 120px;
 }

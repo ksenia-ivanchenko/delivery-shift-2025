@@ -1,5 +1,6 @@
 import { BoxIcon, QRCode } from 'ui-kit';
 import styles from './main-page.module.scss';
+import { Calculator } from 'components';
 
 export const MainPage = () => {
   return (
@@ -15,6 +16,7 @@ export const MainPage = () => {
           <p className={styles.qrText}>Наведите камеру телефона на QR‑код</p>
         </div>
       </div>
+      <Calculator />
     </main>
   );
 };

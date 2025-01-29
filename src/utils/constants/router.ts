@@ -3,6 +3,6 @@ export const ROUTES = {
   PROFILE: '/profile',
   ORDERS: '/orders',
   DETAILS: '/orders/:id',
-  CHECKOUT: '/checkout/:step',
+  CHECKOUT: '/checkout',
   AUTH: '/auth'
 };

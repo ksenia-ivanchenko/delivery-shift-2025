@@ -6,6 +6,7 @@
   padding-block: $button-block-padding;
   border-radius: $button-border-radius;
   border: none;
+  inline-size: 100%;
   line-height: 24px;
   max-inline-size: 500px;
   max-block-size: 80px;
@@ -58,7 +59,7 @@
     }
 
     &.link {
-      background-color: $primary-button-link-bg;
+      background-color: transparent;
       color: $primary-button-link-color;
       font-weight: $link-button-font-weigth;
       padding: 0;
@@ -142,6 +143,7 @@
     &.link {
       font-weight: $link-button-font-weigth;
       padding: 0;
+      background-color: transparent;
 
       span::after {
         content: '';
@@ -184,11 +186,11 @@
 
   &.tertiary {
     color: $tertiary-button-link-color;
-    background-color: $secondary-button-contained-bg;
     font-weight: $tertiary-link-button-font-weigth;
     text-decoration: underline;
     text-underline-offset: 4px;
     padding: 0;
+    background-color: transparent;
 
     &:hover:enabled {
       color: $tertiary-button-link-hover-color;

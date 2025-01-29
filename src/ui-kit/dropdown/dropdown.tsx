@@ -5,6 +5,7 @@ import { ArrowIcon } from 'ui-kit';
 import clsx from 'clsx';
 import { Option } from '../dropdown-list/dropdown-list';
 import { DropdownList } from '../dropdown-list';
+import { useDropdown } from 'hooks';
 
 type DropdownProps = {
   icon?: ReactNode;
@@ -25,33 +26,14 @@ export const Dropdown = ({
   suggestedOptions,
   label
 }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(defaultSelectedOption);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { isOpen, selectedOption, dropdownRef, toggleDropdown, handleOptionClick } =
+    useDropdown(onSelect);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleOptionClick = (option: Option) => {
-    setSelectedOption(option);
-    onSelect(option.value);
-    setIsOpen(false);
-  };
+    if (defaultSelectedOption && selectedOption === undefined) {
+      handleOptionClick(defaultSelectedOption);
+    }
+  }, [defaultSelectedOption, selectedOption]);
 
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>

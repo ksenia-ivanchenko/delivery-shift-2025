@@ -16,7 +16,8 @@
       "cookies": ["utils/cookies/"],
       "store": ["utils/store/"],
       "constants": ["utils/constants/"],
-      "helpers": ["utils/helpers/"]
+      "helpers": ["utils/helpers/"],
+      "hooks": ["utils/hooks/"]
     }
   },
   "include": ["src"]

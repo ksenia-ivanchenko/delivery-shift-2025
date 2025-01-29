@@ -1,8 +1,6 @@
 import { ComponentProps } from 'react';
 
-interface ProfileIconProps extends ComponentProps<'svg'> {}
-
-export const ProfileIcon = ({ ...props }: ProfileIconProps) => (
+export const ProfileIcon = ({ ...props }: ComponentProps<'svg'>) => (
   <svg
     width='17'
     height='16'
