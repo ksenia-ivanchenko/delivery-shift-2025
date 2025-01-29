@@ -1,8 +1,6 @@
-import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import { ProtectedRoute } from 'components';
-import { checkUserAuth, store, useDispatch } from 'store';
+import { checkUserAuth, useDispatch } from 'store';
 import {
   AuthPage,
   CheckoutPage,

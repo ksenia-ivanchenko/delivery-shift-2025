@@ -65,9 +65,10 @@ export const AuthOtp = ({ goToPrevStep }: AuthOtpProps) => {
   };
 
   const requestCode = () => {
-    createOtp({ phone: user.phone });
-    setSeconds(120);
-    setCanRequest(false);
+    createOtp({ phone: user.phone }).then((res) => {
+      setSeconds(res.data.retryDelay);
+      setCanRequest(false);
+    });
   };
 
   const handleRequestAgain = () => {

@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ReactNode, FormEvent, KeyboardEvent } from 'react';
 import styles from './auth-form.module.scss';
 import { Button } from 'ui-kit';
 
@@ -18,16 +18,16 @@ export const AuthForm = ({
   buttonText,
   valid
 }: AuthFormProps) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
     if (valid) {
       onSubmit();
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (valid && e.key === 'Enter') {
-      handleSubmit(e);
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (valid && event.key === 'Enter') {
+      handleSubmit(event);
     }
   };
 
