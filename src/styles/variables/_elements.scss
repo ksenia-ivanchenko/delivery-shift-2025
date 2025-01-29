@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+$bg-disabled: rgba(243, 244, 246, 1);
+$input-hover-border: 1px solid rgba(151, 161, 175, 1);
+$input-border-radius: 8px;
+$input-font-weight: 400;
+$input-placeholder-font-size: 16px;
+$input-placeholder-line-height: 24px;
+$input-decor-font-size: 14px;
+$input-decor-line-height: 20px;
+
+$contained-button-font-weigth: 600;
+$text-button-font-weigth: 600;
+$link-button-font-weigth: 500;
+$link-button-font-weigth: 500;
+$tertiary-link-button-font-weigth: 400;
+$button-border-radius: 16px;
+$button-inline-padding: 32px;
+$button-block-padding: 16px;
+
+$content-inline-padding: clamp(0.625rem, -3.3224rem + 21.0526vw, 15.625rem);
+$main-font-family: 'Inter', sans-serif;
+$main-line-height: 24px;

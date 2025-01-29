@@ -5,7 +5,7 @@
   top: calc(100% - 20px);
   left: 0;
   right: 0;
-  background-color: $input-bg;
+  background-color: $bg-primary;
   max-block-size: 200px;
   padding: 8px 6px;
   gap: 4px;
@@ -24,6 +24,6 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: $input-disabled-bg;
+    background-color: $bg-secondary;
   }
 }
