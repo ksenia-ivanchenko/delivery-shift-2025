@@ -82,7 +82,6 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
       <Input
         label='Улица'
         placeholder='Улица'
-        pattern='^[A-Za-zА-Яа-яЁё]+$'
         required
         type='text'
         error={streetInput.error}

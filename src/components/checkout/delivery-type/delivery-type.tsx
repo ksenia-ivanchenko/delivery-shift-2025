@@ -30,9 +30,7 @@ const DeliveryTypeItem = ({ option, icon, handleCardClick }: DeliveryTypeItemPro
       <div className={styles.textContainer}>
         <span className={styles.name}>{option.name}</span>
         <span className={styles.price}>{Math.floor(option.price / 100)} ₽</span>
-        <span className={styles.days}>
-          {option.days} {getWorkdayLabel(option.days)}
-        </span>
+        <span className={styles.days}>{getWorkdayLabel(option.days)}</span>
       </div>
     </li>
   );

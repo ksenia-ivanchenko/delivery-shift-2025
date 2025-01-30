@@ -1,47 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Address, DeliveryOption, DeliveryType, Point, User } from 'api';
+import { Address, DeliveryOption, DeliveryType, Payers, Point, User } from 'api';
 import { OrderState } from './types';
+import { createOrder } from './thunks';
+
+const initialAddress = {
+  street: '',
+  house: '',
+  apartment: '',
+  comment: ''
+};
+const initialPerson = {
+  phone: '',
+  firstname: '',
+  middlename: '',
+  lastname: '',
+  city: ''
+};
+const initialPoint = {
+  id: '',
+  name: '',
+  latitude: 0,
+  longitude: 0
+};
 
 const initialState: OrderState = {
-  senderPoint: {
-    id: '',
-    name: '',
-    latitude: 0,
-    longitude: 0
-  },
-  sender: {
-    phone: '',
-    firstname: '',
-    middlename: '',
-    lastname: '',
-    city: ''
-  },
-  senderAddress: {
-    street: '',
-    house: '',
-    apartment: '',
-    comment: ''
-  },
-  receiverPoint: {
-    id: '',
-    name: '',
-    latitude: 0,
-    longitude: 0
-  },
-  receiver: {
-    phone: '',
-    firstname: '',
-    middlename: '',
-    lastname: '',
-    city: ''
-  },
-  receiverAddress: {
-    street: '',
-    house: '',
-    apartment: '',
-    comment: ''
-  },
+  senderPoint: initialPoint,
+  sender: initialPerson,
+  senderAddress: initialAddress,
+  receiverPoint: initialPoint,
+  receiver: initialPerson,
+  receiverAddress: initialAddress,
   payer: 'RECEIVER',
   option: {
     id: '',
@@ -51,7 +40,10 @@ const initialState: OrderState = {
     type: DeliveryType.DEFAULT
   },
   loading: false,
-  requestError: null
+  requestError: null,
+  status: null,
+  cancellable: false,
+  id: ''
 };
 
 export const orderSlice = createSlice({
@@ -80,9 +72,28 @@ export const orderSlice = createSlice({
     },
     setSenderAddress: (state, action: PayloadAction<Address>) => {
       state.senderAddress = action.payload;
+    },
+    setPayer: (state, action: PayloadAction<Payers>) => {
+      state.payer = action.payload;
     }
   },
-  extraReducers: (builder) => {}
+  extraReducers: (builder) => {
+    builder
+      .addCase(createOrder.pending, (state) => {
+        state.loading = true;
+        state.requestError = null;
+      })
+      .addCase(createOrder.rejected, (state, action) => {
+        state.loading = false;
+        state.requestError = action.payload.reason;
+      })
+      .addCase(createOrder.fulfilled, (state, action) => {
+        state.loading = false;
+        state.status = action.payload.order.status;
+        state.cancellable = action.payload.order.cancellable;
+        state.id = action.payload.order._id;
+      });
+  }
 });
 
 export const {
@@ -92,5 +103,6 @@ export const {
   setReceiver,
   setSender,
   setReceiverAddress,
-  setSenderAddress
+  setSenderAddress,
+  setPayer
 } = orderSlice.actions;

@@ -9,10 +9,20 @@ interface CheckoutButtonsProps {
 
 export const CheckoutButtons = ({ prev, disabled }: CheckoutButtonsProps) => (
   <div className={styles.buttons}>
-    <Button type='button' onClick={prev} styleType={{ type: 'secondary', variant: 'contained' }}>
+    <Button
+      type='button'
+      onClick={prev}
+      styleType={{ type: 'secondary', variant: 'contained' }}
+      className={styles.button}
+    >
       Назад
     </Button>
-    <Button type='submit' styleType={{ type: 'primary', variant: 'contained' }} disabled={disabled}>
+    <Button
+      type='submit'
+      styleType={{ type: 'primary', variant: 'contained' }}
+      disabled={disabled}
+      className={styles.button}
+    >
       Продолжить
     </Button>
   </div>

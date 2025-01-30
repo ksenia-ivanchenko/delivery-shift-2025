@@ -11,16 +11,16 @@ export const useInputText = (params?: UseInputTextParams) => {
   const [error, setError] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let validationText = event.target.value.replace(/[^A-Za-zА-Яа-яЁё]/g, '');
+    let validationText = event.target.value.replace(/[^A-Za-zА-Яа-яЁё\s-]/g, '');
     if (params?.numberAllowed) {
-      validationText = event.target.value.replace(/[^A-Za-zА-Яа-яЁё0-9]/g, '');
+      validationText = event.target.value.replace(/[^A-Za-zА-Яа-яЁё0-9\s]/g, '');
     }
     if (params?.allowedSymbols) {
       const allowedSymbols = params.allowedSymbols.join('');
-      const regex = new RegExp(`[^A-Za-zА-Яа-яЁё0-9${allowedSymbols}]`, 'g');
+      const regex = new RegExp(`[^A-Za-zА-Яа-яЁё0-9\s${allowedSymbols}]`, 'g');
       validationText = event.target.value.replace(regex, '');
     }
-    
+
     setText(validationText);
 
     if (params?.required) {

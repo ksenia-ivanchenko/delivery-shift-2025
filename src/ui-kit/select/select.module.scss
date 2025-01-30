@@ -1,0 +1,62 @@
+@import 'styles';
+
+.options {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: $text-primary;
+  transition: scale 0.2s ease-in-out;
+  padding-left: 40px;
+
+  &:active {
+    scale: 0.99;
+  }
+}
+
+.option .input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio {
+  position: relative;
+}
+
+.radio::before {
+  content: '';
+  position: absolute;
+  background-color: transparent;
+  border: $border-light;
+  border-radius: 50%;
+  inline-size: 20px;
+  block-size: 20px;
+  left: -40px;
+  top: 1px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.input:checked + .radio::before {
+  background-color: $bg-brand;
+  border-color: $bg-brand;
+}
+
+.input:checked + .radio::after {
+  content: '';
+  position: absolute;
+  inline-size: 10px;
+  block-size: 10px;
+  left: -35px;
+  top: 7px;
+  background-image: url('./check.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

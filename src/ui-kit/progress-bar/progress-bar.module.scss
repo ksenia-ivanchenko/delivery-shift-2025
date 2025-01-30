@@ -11,7 +11,7 @@
 .progressBar {
   inline-size: 100%;
   block-size: 5px;
-  background-color: transparent;
+  background-color: $indicator-light;
   border-radius: 8px;
   overflow: hidden;
 }

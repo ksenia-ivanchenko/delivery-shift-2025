@@ -1,9 +1,9 @@
 export const getWorkdayLabel = (days: number) => {
   if (days === 1) {
-    return 'рабочий день';
+    return `${days} рабочий день`;
   } else if (days === 2 || days === 3 || days === 4) {
-    return 'рабочих дня';
+    return `${days} рабочих дня`;
   } else {
-    return 'рабочих дней';
+    return `${days} рабочих дней`;
   }
 };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { DeliveryType, Contacts, Address } from 'components';
-import { Preloader, ProgressBar } from 'ui-kit';
+import { DeliveryType, Contacts, Address, Payer, CheckOrder, Success } from 'components';
+import { AcceptIcon, Preloader, ProgressBar } from 'ui-kit';
 import { useSelector } from 'store';
 import styles from './checkout-page.module.scss';
 
@@ -62,7 +62,7 @@ export const CheckoutPage = () => {
           content: (
             <Address
               defaultValues={order.receiverAddress}
-              type='sender'
+              type='receiver'
               next={goToNextStep}
               prev={goToPreviousStep}
             />
@@ -71,12 +71,22 @@ export const CheckoutPage = () => {
       case 6:
         return {
           title: 'Оплата доставки',
-          content: <>6</>
+          content: <Payer next={goToNextStep} prev={goToPreviousStep} defaultValue={order.payer} />
         };
       case 7:
         return {
           title: 'Проверка данных заказа',
-          content: <>7</>
+          content: <CheckOrder next={goToNextStep} prev={goToPreviousStep} />
+        };
+      case 8:
+        return {
+          title: (
+            <div className={styles.success}>
+              <AcceptIcon />
+              Заявка отправлена
+            </div>
+          ),
+          content: <Success setCurrentStep={setCurrentStep} />
         };
       default:
         return {
@@ -89,7 +99,7 @@ export const CheckoutPage = () => {
   return (
     <div className={styles.main}>
       <h2 className={styles.title}>{renderStep().title}</h2>
-      <ProgressBar currentStep={currentStep} steps={7} />
+      {currentStep < 8 && <ProgressBar currentStep={currentStep} steps={7} />}
       {loading ? <Preloader /> : renderStep().content}
     </div>
   );

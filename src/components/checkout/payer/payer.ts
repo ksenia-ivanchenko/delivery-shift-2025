@@ -1,1 +1,0 @@
-export { Payer } from './Payer';

@@ -13,3 +13,5 @@ export * from './package-s';
 export * from './package-xs';
 export * from './default-delivery-icon';
 export * from './express-delivery-icon';
+export * from './edit';
+export * from './accept';
