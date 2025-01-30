@@ -25,7 +25,7 @@ const CheckOrderCard = ({ param, fieldFirst, valueFirst, fieldSecond, valueSecon
 
 export const CheckOrder = ({ prev, next }) => {
   const order = useSelector((state) => state.order);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const getFullName = (person: User) =>
     `${person.lastname} ${person.firstname} ${person.middlename ?? ''}`;
@@ -34,12 +34,12 @@ export const CheckOrder = ({ prev, next }) => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(createOrder(order))
-    next()
+    dispatch(createOrder(order));
+    next();
   };
 
   return (
-    <form className={styles.content} onSubmit={handleSubmit}>
+    <form className={styles.content} onSubmit={handleSubmit} id='check'>
       <ul className={styles.cardList}>
         <CheckOrderCard
           param='Получатель'

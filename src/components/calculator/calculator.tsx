@@ -35,7 +35,7 @@ export const Calculator = () => {
   };
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
+    <form className={styles.container} onSubmit={handleSubmit} id='calculator'>
       <h2 className={styles.title}>Рассчитать доставку</h2>
       <Dropdown
         label='Город отправки'

@@ -21,6 +21,7 @@
   border-radius: $input-border-radius;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-block-size: 48px;
 
   &:hover {
     background-color: $bg-secondary;

@@ -1,6 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getUserSession, LoginData, signInApi } from 'api';
+import {
+  getUserSession,
+  LoginData,
+  signInApi,
+  updateUserDataApi,
+  UpdateUserDataRequest,
+  UpdateUserDataResponse
+} from 'api';
 import { deleteCookie, getCookie } from 'cookies';
 
 export const signIn = createAsyncThunk(
@@ -25,5 +32,20 @@ export const checkUserAuth = createAsyncThunk('user/checkAuth', async (_, { reje
   } catch (error) {
     deleteCookie('accessToken');
     return rejectWithValue(error.message);
+  }
+});
+
+export const updateUserData = createAsyncThunk<
+  UpdateUserDataResponse,
+  UpdateUserDataRequest,
+  { rejectValue: { reason: string } }
+>('user/update', async (userData: UpdateUserDataRequest, { rejectWithValue }) => {
+  try {
+    const response = await updateUserDataApi(userData);
+    return response.data;
+  } catch (error) {
+    return rejectWithValue({
+      reason: error?.response?.data?.reason || 'Неизвестная ошибка'
+    });
   }
 });
