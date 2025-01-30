@@ -6,3 +6,4 @@ export * from './calculator';
 export * from './header';
 export * from './layout';
 export * from './package-type-dropdown';
+export * from './checkout';

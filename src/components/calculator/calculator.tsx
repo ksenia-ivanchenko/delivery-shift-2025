@@ -1,7 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { FormEvent } from 'react';
 
 import { Button, Dropdown, LocationIcon, PlaneIcon } from 'ui-kit';
-import { calculateDelivery, useDispatch, useSelector } from 'store';
+import {
+  calculateDelivery,
+  setReceiverPoint,
+  setSenderPoint,
+  useDispatch,
+  useSelector
+} from 'store';
 import { PackageTypeDropdown } from 'components';
 import { hasZeroValue } from 'helpers';
 import { useSelectCalcParams } from 'hooks';
@@ -18,9 +25,12 @@ export const Calculator = () => {
     value: point
   }));
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     dispatch(calculateDelivery(calcParams));
+    dispatch(setReceiverPoint(calcParams.receiverPoint));
+    dispatch(setSenderPoint(calcParams.senderPoint));
+
     navigate('/checkout');
   };
 

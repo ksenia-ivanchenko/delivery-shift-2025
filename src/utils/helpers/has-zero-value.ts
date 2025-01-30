@@ -1,5 +1,5 @@
 type CalcParams = {
-  [key: string]: number | CalcParams;
+  [key: string]: number | string | CalcParams;
 };
 
 export const hasZeroValue = (obj: CalcParams): boolean => {

@@ -56,7 +56,7 @@ const router = createBrowserRouter([
     path: ROUTES.CHECKOUT,
     element: (
       <Layout>
-        <CheckoutPage />
+          <CheckoutPage />
       </Layout>
     )
   },

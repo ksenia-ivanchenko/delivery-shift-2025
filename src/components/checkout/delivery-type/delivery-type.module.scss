@@ -1,0 +1,112 @@
+@import 'styles';
+
+.content {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  inline-size: 100%;
+  padding: 16px;
+  gap: 24px;
+  border-radius: 24px;
+  border: $border-extra-light;
+  background: $bg-primary;
+  display: flex;
+  cursor: pointer;
+  transition:
+    scale 0.2s ease-in-out,
+    background-color 0.3s ease-in-out;
+
+  &:hover {
+    background: $bg-tertiary;
+  }
+
+  &:active {
+    scale: 0.98;
+  }
+}
+
+.iconContainer {
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 50%;
+  background: $bg-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: $text-tertiary;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $text-primary;
+}
+
+.days {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: $text-tertiary;
+  margin-block-start: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  inline-size: 100%;
+}
+
+.promoCard {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 10px;
+  border-radius: 16px;
+  background: linear-gradient(280.73deg, #92beff -8.31%, #1975ff 100.62%);
+  inline-size: 100%;
+  position: relative;
+}
+
+.promoTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $bg-primary;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $bg-primary;
+  opacity: 0.6;
+}
+
+.gifts {
+  width: 136px;
+  height: 107px;
+  background-image: url('./promo.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  right: -1px;
+  bottom: -19px;
+}

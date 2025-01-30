@@ -6,6 +6,7 @@ export type OrderState = {
   senderAddress: Address;
   receiverPoint: Point;
   receiver: User;
+  receiverAddress: Address;
   payer: 'RECEIVER';
   option: DeliveryOption;
   loading: boolean;

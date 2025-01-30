@@ -5,11 +5,12 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-import { deliverySlice, userSlice } from './slices';
+import { deliverySlice, orderSlice, userSlice } from './slices';
 
 export const rootReducer = combineReducers({
   [userSlice.name]: userSlice.reducer,
-  [deliverySlice.name]: deliverySlice.reducer
+  [deliverySlice.name]: deliverySlice.reducer,
+  [orderSlice.name]: orderSlice.reducer
 });
 
 export const store = configureStore({

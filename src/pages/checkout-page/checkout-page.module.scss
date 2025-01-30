@@ -1,0 +1,18 @@
+@import 'styles';
+
+.main {
+  inline-size: clamp(12.5rem, 8.0921rem + 23.5088vw, 29.25rem);
+  margin-inline-start: $content-inline-padding;
+
+  padding-block: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $text-primary;
+}
