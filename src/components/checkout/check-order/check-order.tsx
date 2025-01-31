@@ -25,7 +25,7 @@ const CheckOrderCard = ({ param, fieldFirst, valueFirst, fieldSecond, valueSecon
 
 export const CheckOrder = ({ prev, next }) => {
   const order = useSelector((state) => state.order);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const getFullName = (person: User) =>
     `${person.lastname} ${person.firstname} ${person.middlename ?? ''}`;
@@ -34,8 +34,19 @@ export const CheckOrder = ({ prev, next }) => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(createOrder(order))
-    next()
+    const orderRequestData = {
+      ...order,
+      sender: {
+        ...order.sender,
+        phone: order.sender.phone.replace(/[\+\s]/g, '').replace(/^7/, '8')
+      },
+      receiver: {
+        ...order.receiver,
+        phone: order.receiver.phone.replace(/[\+\s]/g, '').replace(/^7/, '8')
+      }
+    };
+    dispatch(createOrder(orderRequestData));
+    next();
   };
 
   return (

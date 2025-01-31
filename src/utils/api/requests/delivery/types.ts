@@ -70,10 +70,10 @@ export type Payers = 'RECEIVER' | 'SENDER';
 export type PostOrderRequest = {
   senderPoint: Point;
   senderAddress: Address;
-  sender: Person;
+  sender: Person & { city: string };
   receiverPoint: Point;
   receiverAddress: Address;
-  receiver: Person;
+  receiver: Person & { city: string };
   payer: Payers;
   option: DeliveryOption;
 };
@@ -93,13 +93,13 @@ export type PostOrderResponse = {
 export type GetOrdersResponse = {
   success: boolean;
   reason?: string;
-  orders: Omit<OrderResponse, 'option'>;
+  orders: OrderResponse[];
 };
 
 export type GetOrderResponse = {
   success: boolean;
   reason?: string;
-  order: Omit<OrderResponse, 'option'>;
+  order: OrderResponse;
 };
 
 export type CancelDeliveryResponse = {

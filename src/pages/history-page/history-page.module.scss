@@ -1,0 +1,24 @@
+@import 'styles';
+
+.content {
+  padding-inline: $content-inline-padding;
+}
+
+.header {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 1.55fr 1.15fr;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $text-tertiary;
+  padding-block-end: 30px;
+  border-bottom: $border-light;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-block: 50px;
+}

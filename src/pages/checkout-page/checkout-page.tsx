@@ -4,11 +4,13 @@ import { DeliveryType, Contacts, Address, Payer, CheckOrder, Success } from 'com
 import { AcceptIcon, Preloader, ProgressBar } from 'ui-kit';
 import { useSelector } from 'store';
 import styles from './checkout-page.module.scss';
+import { formatPhoneNumber } from 'helpers';
 
 export const CheckoutPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const { loading } = useSelector((state) => state.delivery);
   const order = useSelector((state) => state.order);
+  const user = useSelector((state) => state.user);
 
   const goToNextStep = () => setCurrentStep((prev) => prev + 1);
   const goToPreviousStep = () => setCurrentStep((prev) => prev - 1);
@@ -37,7 +39,11 @@ export const CheckoutPage = () => {
           title: 'Отправитель',
           content: (
             <Contacts
-              defaultValues={order.sender}
+              defaultValues={{
+                ...order.sender,
+                ...user.user,
+                phone: formatPhoneNumber(user.user.phone)
+              }}
               type='sender'
               next={goToNextStep}
               prev={goToPreviousStep}

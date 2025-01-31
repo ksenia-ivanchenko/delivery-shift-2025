@@ -13,6 +13,12 @@
   color: $text-secondary;
 }
 
+.buttons {
+  display: flex;
+  gap: 30px;
+  margin-block-start: 30px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -23,63 +29,6 @@
   opacity: 0px;
   background-color: $bg-primary;
   inline-size: clamp(15.625rem, 9.8684rem + 30.7018vw, 37.5rem);
-}
-
-.fieldContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.field {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  color: $text-tertiary;
-}
-
-.status {
-  padding-inline-start: 20px;
-  position: relative;
-}
-
-.status::before {
-  content: '';
-  inline-size: 8px;
-  block-size: 8px;
-  border-radius: 50%;
-  position: absolute;
-  top: 8px;
-  left: 0;
-}
-
-.yellow.status::before {
-  background-color: rgba(255, 178, 25, 1);
-}
-.orange.status::before {
-  background-color: rgb(255, 105, 25);
-}
-.gray.status::before {
-  background-color: rgb(127, 127, 127);
-}
-.blue.status::before {
-  background-color: rgb(40, 115, 255);
-}
-.green.status::before {
-  background-color: rgb(0, 139, 14);
-}
-
-.value {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: $text-primary;
-}
-
-.buttons {
-  display: flex;
-  gap: 30px;
-  margin-block-start: 30px;
 }
 
 .sms {

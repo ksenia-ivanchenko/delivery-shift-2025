@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getUserSession, LoginData, signInApi } from 'api';
+import { getOrdersApi, GetOrdersResponse, getUserSession, LoginData, signInApi } from 'api';
 import { deleteCookie, getCookie } from 'cookies';
 
 export const signIn = createAsyncThunk(
@@ -25,5 +25,20 @@ export const checkUserAuth = createAsyncThunk('user/checkAuth', async (_, { reje
   } catch (error) {
     deleteCookie('accessToken');
     return rejectWithValue(error.message);
+  }
+});
+
+export const getOrders = createAsyncThunk<
+  GetOrdersResponse,
+  void,
+  { rejectValue: { reason: string } }
+>('user/orders', async (_, { rejectWithValue }) => {
+  try {
+    const response = await getOrdersApi();
+    return response.data;
+  } catch (error) {
+    return rejectWithValue({
+      reason: error?.response?.data?.reason || 'Неизвестная ошибка'
+    });
   }
 });

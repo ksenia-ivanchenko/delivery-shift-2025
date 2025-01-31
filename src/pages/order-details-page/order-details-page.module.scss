@@ -1,0 +1,30 @@
+@import 'styles';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 48px;
+  gap: 24px;
+  border-radius: 24px;
+  border: $border-light;
+  opacity: 0px;
+  background-color: $bg-primary;
+  inline-size: clamp(15.625rem, 9.8684rem + 30.7018vw, 37.5rem);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $text-primary;
+  margin-block: 50px 20px;
+}
+
+.content {
+  padding-inline: $content-inline-padding;
+}

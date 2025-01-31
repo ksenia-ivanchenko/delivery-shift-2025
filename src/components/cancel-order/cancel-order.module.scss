@@ -1,0 +1,27 @@
+@import 'styles';
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $text-primary;
+  margin-block-end: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  inline-size: clamp(15.625rem, 13.1579rem + 13.1579vw, 25rem);
+  margin-inline: 20px;
+  margin-block-end: 20px;
+}
+
+.buttons {
+  inline-size: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
