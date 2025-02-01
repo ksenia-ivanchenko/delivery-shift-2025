@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { UserState } from './types';
 import { User } from 'api';
-import { checkUserAuth, signIn, updateUserData } from './thunks';
+import { checkUserAuth, signIn, getOrders, updateUserData } from './thunks';
 
 const initialState: UserState = {
   user: {
@@ -13,6 +13,7 @@ const initialState: UserState = {
     email: '',
     city: ''
   },
+  orders: [],
   authorized: false,
   loading: false,
   requestError: null
@@ -84,6 +85,18 @@ export const userSlice = createSlice({
         state.requestError = action.payload as string;
         state.authorized = false;
       });
+    builder
+      .addCase(getOrders.pending, (state) => {
+        state.loading = true;
+        state.requestError = null;
+      })
+      .addCase(getOrders.rejected, (state, action) => {
+        state.loading = false;
+        state.requestError = action.payload.reason;
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.loading = false;
+        state.orders = action.payload.orders;
     builder
       .addCase(updateUserData.pending, (state) => {
         state.loading = true;

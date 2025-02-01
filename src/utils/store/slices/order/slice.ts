@@ -24,7 +24,7 @@ const initialPoint = {
   longitude: 0
 };
 
-const initialState: OrderState = {
+export const initialState: OrderState = {
   senderPoint: initialPoint,
   sender: initialPerson,
   senderAddress: initialAddress,
@@ -43,7 +43,7 @@ const initialState: OrderState = {
   requestError: null,
   status: null,
   cancellable: false,
-  id: ''
+  _id: ''
 };
 
 export const orderSlice = createSlice({
@@ -91,8 +91,21 @@ export const orderSlice = createSlice({
         state.loading = false;
         state.status = action.payload.order.status;
         state.cancellable = action.payload.order.cancellable;
-        state.id = action.payload.order._id;
+        state._id = action.payload.order._id;
       });
+    // builder
+    //   .addCase(cancelOrder.pending, (state) => {
+    //     state.loading = true;
+    //     state.requestError = null;
+    //   })
+    //   .addCase(cancelOrder.rejected, (state, action) => {
+    //     state.loading = false;
+    //     state.requestError = action.payload.reason;
+    //   })
+    //   .addCase(cancelOrder.fulfilled, (state, action) => {
+    //     state.loading = false;
+    //     state.
+    //   });
   }
 });
 

@@ -13,5 +13,5 @@ export type OrderState = {
   requestError: null | string;
   status: null | 0 | 1 | 2 | 3 | 4;
   cancellable: boolean;
-  id: string;
+  _id: string;
 };

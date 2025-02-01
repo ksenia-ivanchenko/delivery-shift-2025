@@ -34,7 +34,19 @@ export const CheckOrder = ({ prev, next }) => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(createOrder(order));
+    const orderRequestData = {
+      ...order,
+      sender: {
+        ...order.sender,
+        phone: order.sender.phone.replace(/[\+\s]/g, '').replace(/^7/, '8')
+      },
+      receiver: {
+        ...order.receiver,
+        phone: order.receiver.phone.replace(/[\+\s]/g, '').replace(/^7/, '8')
+      }
+    };
+    dispatch(createOrder(orderRequestData));
+    
     next();
   };
 

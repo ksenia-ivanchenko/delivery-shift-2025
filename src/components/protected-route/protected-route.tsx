@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, Suspense, useMemo } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useSelector } from 'store';
@@ -19,9 +19,5 @@ export const ProtectedRoute = ({ children, type }: ProtectedRouteProps) => {
     return <Navigate to='/' />;
   }
 
-  if (loading) {
-    return <Preloader />;
-  }
-
-  return children;
+  return <Suspense fallback={<Preloader />}>{children}</Suspense>;
 };

@@ -1,0 +1,30 @@
+.status {
+  padding-inline-start: 20px;
+  position: relative;
+}
+
+.status::before {
+  content: '';
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+  left: 0;
+}
+
+.yellow.status::before {
+  background-color: rgba(255, 178, 25, 1);
+}
+.orange.status::before {
+  background-color: rgb(255, 105, 25);
+}
+.gray.status::before {
+  background-color: rgb(127, 127, 127);
+}
+.blue.status::before {
+  background-color: rgb(40, 115, 255);
+}
+.red.status::before {
+  background-color: rgb(186, 0, 0);
+}

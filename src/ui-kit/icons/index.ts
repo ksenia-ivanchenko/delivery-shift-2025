@@ -15,3 +15,5 @@ export * from './default-delivery-icon';
 export * from './express-delivery-icon';
 export * from './edit';
 export * from './accept';
+export * from './close';
+export * from './question';
