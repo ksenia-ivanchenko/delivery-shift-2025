@@ -7,13 +7,15 @@ import styles from './checkout-page.module.scss';
 import { formatPhoneNumber } from 'helpers';
 
 export const CheckoutPage = () => {
-  const [currentStep, setCurrentStep] = useState(5);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [editing, setEditing] = useState(false);
   const { loading } = useSelector((state) => state.delivery);
   const order = useSelector((state) => state.order);
   const user = useSelector((state) => state.user);
 
   const goToNextStep = () => setCurrentStep((prev) => prev + 1);
   const goToPreviousStep = () => setCurrentStep((prev) => prev - 1);
+  const backToCheckPage = () => setCurrentStep(7);
 
   const renderStep = () => {
     switch (currentStep) {
@@ -31,6 +33,8 @@ export const CheckoutPage = () => {
               type='receiver'
               next={goToNextStep}
               prev={goToPreviousStep}
+              editing={editing}
+              backToCheckPage={backToCheckPage}
             />
           )
         };
@@ -39,14 +43,18 @@ export const CheckoutPage = () => {
           title: 'Отправитель',
           content: (
             <Contacts
-              defaultValues={{
-                ...order.sender,
-                ...user.user,
-                phone: formatPhoneNumber(user.user.phone)
-              }}
+              defaultValues={
+                order.sender ?? {
+                  ...order.sender,
+                  ...user.user,
+                  phone: formatPhoneNumber(user.user.phone)
+                }
+              }
               type='sender'
               next={goToNextStep}
               prev={goToPreviousStep}
+              editing={editing}
+              backToCheckPage={backToCheckPage}
             />
           )
         };
@@ -59,6 +67,8 @@ export const CheckoutPage = () => {
               type='sender'
               next={goToNextStep}
               prev={goToPreviousStep}
+              editing={editing}
+              backToCheckPage={backToCheckPage}
             />
           )
         };
@@ -71,6 +81,8 @@ export const CheckoutPage = () => {
               type='receiver'
               next={goToNextStep}
               prev={goToPreviousStep}
+              editing={editing}
+              backToCheckPage={backToCheckPage}
             />
           )
         };
@@ -82,7 +94,14 @@ export const CheckoutPage = () => {
       case 7:
         return {
           title: 'Проверка данных заказа',
-          content: <CheckOrder next={goToNextStep} prev={goToPreviousStep} />
+          content: (
+            <CheckOrder
+              next={goToNextStep}
+              prev={goToPreviousStep}
+              setStep={setCurrentStep}
+              setEditing={setEditing}
+            />
+          )
         };
       case 8:
         return {

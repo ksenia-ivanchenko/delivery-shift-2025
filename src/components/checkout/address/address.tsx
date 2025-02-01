@@ -11,12 +11,21 @@ type AddressProps = {
   next: () => void;
   type: 'receiver' | 'sender';
   defaultValues: any;
+  editing: boolean;
+  backToCheckPage: () => void;
 };
 
 // логика дублируется с Contacts, есть смысл вынести в кастомный хук?
 // универсальный компонент для любого типа форм из флоу че то как будто в падлу
 
-export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
+export const Address = ({
+  prev,
+  next,
+  type,
+  defaultValues,
+  editing,
+  backToCheckPage
+}: AddressProps) => {
   const dispatch = useDispatch();
   const formRef = useRef<HTMLFormElement>(null);
   const [isFormValid, setFormValid] = useState(false);
@@ -82,8 +91,11 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
     apartmentInput.setText('');
     commentInput.setText('');
     setFormValid(false);
-
-    next();
+    if (editing) {
+      backToCheckPage();
+    } else {
+      next();
+    }
   };
 
   return (

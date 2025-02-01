@@ -6,7 +6,7 @@ import { CheckoutButtons } from '../buttons';
 import styles from './check-order.module.scss';
 import { FormEvent } from 'react';
 
-const CheckOrderCard = ({ param, fieldFirst, valueFirst, fieldSecond, valueSecond }) => (
+const CheckOrderCard = ({ param, fieldFirst, valueFirst, fieldSecond, valueSecond, edit }) => (
   <li className={styles.card}>
     <span className={styles.param}>{param}</span>
     <div className={styles.fieldContainer}>
@@ -17,13 +17,13 @@ const CheckOrderCard = ({ param, fieldFirst, valueFirst, fieldSecond, valueSecon
       <span className={styles.field}>{fieldSecond}</span>
       <span className={styles.value}>{valueSecond}</span>
     </div>
-    <button className={styles.edit}>
+    <button className={styles.edit} type='button' onClick={edit}>
       <EditIcon />
     </button>
   </li>
 );
 
-export const CheckOrder = ({ prev, next }) => {
+export const CheckOrder = ({ prev, next, setStep, setEditing }) => {
   const order = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ export const CheckOrder = ({ prev, next }) => {
       }
     };
     dispatch(createOrder(orderRequestData));
-    
+
     next();
   };
 
@@ -59,6 +59,10 @@ export const CheckOrder = ({ prev, next }) => {
           fieldSecond='Телефон'
           valueFirst={getFullName(order.receiver)}
           valueSecond={order.receiver.phone}
+          edit={() => {
+            setStep(2);
+            setEditing(true);
+          }}
         />
         <CheckOrderCard
           param='Отправитель'
@@ -66,6 +70,10 @@ export const CheckOrder = ({ prev, next }) => {
           fieldSecond='Телефон'
           valueFirst={getFullName(order.sender)}
           valueSecond={order.sender.phone}
+          edit={() => {
+            setStep(3);
+            setEditing(true);
+          }}
         />
         <CheckOrderCard
           param='Откуда забрать'
@@ -73,6 +81,10 @@ export const CheckOrder = ({ prev, next }) => {
           fieldSecond='Заметка'
           valueFirst={getFullAddress(order.senderAddress)}
           valueSecond={order.senderAddress.comment}
+          edit={() => {
+            setStep(4);
+            setEditing(true);
+          }}
         />
         <CheckOrderCard
           param='Куда доставить'
@@ -80,6 +92,10 @@ export const CheckOrder = ({ prev, next }) => {
           fieldSecond='Заметка'
           valueFirst={getFullAddress(order.receiverAddress)}
           valueSecond={order.receiverAddress.comment}
+          edit={() => {
+            setStep(5);
+            setEditing(true);
+          }}
         />
       </ul>
       <div className={styles.info}>

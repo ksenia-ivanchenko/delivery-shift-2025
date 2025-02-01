@@ -10,9 +10,18 @@ type ContactsProps = {
   next: () => void;
   type: 'receiver' | 'sender';
   defaultValues: any;
+  editing?: boolean;
+  backToCheckPage: () => void;
 };
 
-export const Contacts = ({ prev, next, type, defaultValues }: ContactsProps) => {
+export const Contacts = ({
+  prev,
+  next,
+  type,
+  defaultValues,
+  editing,
+  backToCheckPage
+}: ContactsProps) => {
   const [isFormValid, setFormValid] = useState(false);
   const dispatch = useDispatch();
   const formRef = useRef<HTMLFormElement>(null);
@@ -70,7 +79,11 @@ export const Contacts = ({ prev, next, type, defaultValues }: ContactsProps) => 
     lastNameInput.setText('');
     setFormValid(false);
 
-    next();
+    if (editing) {
+      backToCheckPage();
+    } else {
+      next();
+    }
   };
 
   return (
