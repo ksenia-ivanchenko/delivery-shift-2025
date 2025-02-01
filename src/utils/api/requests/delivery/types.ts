@@ -72,7 +72,7 @@ export type PostOrderRequest = {
   senderAddress: Address;
   sender: Person & { city: string };
   receiverPoint: Point;
-  receiverAddress: Address;
+  receiverAddress: Address & { isNonContact: boolean };
   receiver: Person & { city: string };
   payer: Payers;
   option: DeliveryOption;

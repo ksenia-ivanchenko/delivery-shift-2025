@@ -27,10 +27,21 @@ const initialPoint = {
 export const initialState: OrderState = {
   senderPoint: initialPoint,
   sender: initialPerson,
-  senderAddress: initialAddress,
+  senderAddress: {
+    street: '',
+    house: '',
+    apartment: '',
+    comment: ''
+  },
   receiverPoint: initialPoint,
   receiver: initialPerson,
-  receiverAddress: initialAddress,
+  receiverAddress: {
+    street: '',
+    house: '',
+    apartment: '',
+    comment: '',
+    isNonContact: false
+  },
   payer: 'RECEIVER',
   option: {
     id: '',
@@ -67,7 +78,7 @@ export const orderSlice = createSlice({
     setSender: (state, action: PayloadAction<User>) => {
       state.sender = { ...state.sender, ...action.payload };
     },
-    setReceiverAddress: (state, action: PayloadAction<Address>) => {
+    setReceiverAddress: (state, action: PayloadAction<Address & { isNonContact: boolean }>) => {
       state.receiverAddress = action.payload;
     },
     setSenderAddress: (state, action: PayloadAction<Address>) => {

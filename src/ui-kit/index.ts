@@ -5,4 +5,5 @@ export * from './tabs';
 export * from './preloader';
 export * from './icons';
 export * from './progress-bar';
-export * from './select'
+export * from './select';
+export * from './checkbox';

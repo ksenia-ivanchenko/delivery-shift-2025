@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
-import { Input } from 'ui-kit';
+import { Checkbox, Input } from 'ui-kit';
 import { useInputText } from 'hooks';
 import { setReceiverAddress, setSenderAddress, useDispatch } from 'store';
 import styles from './address.module.scss';
@@ -17,9 +17,10 @@ type AddressProps = {
 // универсальный компонент для любого типа форм из флоу че то как будто в падлу
 
 export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
-  const [isFormValid, setFormValid] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
   const dispatch = useDispatch();
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isFormValid, setFormValid] = useState(false);
+  const [isNonContact, setIsNonContact] = useState(defaultValues.isNonContact ?? false);
 
   const streetInput = useInputText({ required: true });
   const houseInput = useInputText({ required: true, numberAllowed: true, allowedSymbols: ['/'] });
@@ -45,6 +46,13 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log({
+      street: streetInput.text,
+      house: houseInput.text,
+      apartment: apartmentInput.text,
+      comment: commentInput.text,
+      isNonContact: isNonContact
+    });
 
     if (type === 'receiver') {
       dispatch(
@@ -52,7 +60,8 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
           street: streetInput.text,
           house: houseInput.text,
           apartment: apartmentInput.text,
-          comment: commentInput.text
+          comment: commentInput.text,
+          isNonContact: isNonContact
         })
       );
     }
@@ -114,6 +123,13 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
         value={commentInput.text}
         onChange={commentInput.handleInputChange}
       />
+      {type === 'receiver' && (
+        <Checkbox
+          onChange={(value) => queueMicrotask(() => setIsNonContact(value))}
+          defaultChecked={defaultValues.isNonContact}
+          label='Оставить у двери'
+        />
+      )}
       <CheckoutButtons prev={prev} disabled={!isFormValid} />
     </form>
   );

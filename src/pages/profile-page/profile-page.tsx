@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 
-import { Button, Dropdown, Input } from 'ui-kit';
+import { Button, Dropdown, Input, Preloader } from 'ui-kit';
 import { getDeliveryPoints, updateUserData, useDispatch, useSelector } from 'store';
 import { useInputText } from 'hooks';
 import { formatPhoneNumber } from 'helpers';
@@ -8,7 +8,7 @@ import styles from './profile-page.module.scss';
 
 export const ProfilePage = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const { user, loading } = useSelector((state) => state.user);
   const { points } = useSelector((state) => state.delivery);
   const [city, setCity] = useState(user.city);
 
@@ -94,8 +94,9 @@ export const ProfilePage = () => {
         styleType={{ type: 'primary', variant: 'contained' }}
         type='submit'
         className={styles.button}
+        disabled={loading}
       >
-        Обновить данные
+        {loading ? <Preloader /> : 'Обновить данные'}
       </Button>
     </form>
   );

@@ -7,7 +7,7 @@ import styles from './checkout-page.module.scss';
 import { formatPhoneNumber } from 'helpers';
 
 export const CheckoutPage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(5);
   const { loading } = useSelector((state) => state.delivery);
   const order = useSelector((state) => state.order);
   const user = useSelector((state) => state.user);

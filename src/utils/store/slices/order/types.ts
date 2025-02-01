@@ -6,7 +6,7 @@ export type OrderState = {
   senderAddress: Address;
   receiverPoint: Point;
   receiver: Person & { city: string };
-  receiverAddress: Address;
+  receiverAddress: Address & { isNonContact: boolean };
   payer: Payers;
   option: DeliveryOption;
   loading: boolean;
