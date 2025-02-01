@@ -1,0 +1,30 @@
+@import 'styles';
+
+.content {
+  padding-inline: $content-inline-padding;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $text-primary;
+  margin-block-start: 50px;
+}
+
+.inputsContainer {
+  margin-block: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.button {
+  max-inline-size: 330px;
+}
