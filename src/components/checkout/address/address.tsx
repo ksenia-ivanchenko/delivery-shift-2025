@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
-import { Checkbox, Input } from 'ui-kit';
+import { Checkbox, ExplainIcon, Input, Tooltip } from 'ui-kit';
 import { useInputText } from 'hooks';
 import { setReceiverAddress, setSenderAddress, useDispatch } from 'store';
 import styles from './address.module.scss';
@@ -124,11 +124,22 @@ export const Address = ({ prev, next, type, defaultValues }: AddressProps) => {
         onChange={commentInput.handleInputChange}
       />
       {type === 'receiver' && (
-        <Checkbox
-          onChange={(value) => queueMicrotask(() => setIsNonContact(value))}
-          defaultChecked={defaultValues.isNonContact}
-          label='Оставить у двери'
-        />
+        <div className={styles.checkboxContainer}>
+          <Checkbox
+            onChange={(value) => queueMicrotask(() => setIsNonContact(value))}
+            defaultChecked={defaultValues.isNonContact}
+            label='Оставить у двери'
+          />
+          <Tooltip text='Подсказка для кнопки' position='top' trigger={<ExplainIcon />}>
+            <div className={styles.tooltipContent}>
+              <h4 className={styles.tooltipTitle}>Бесконтактная доставка</h4>
+              <p className={styles.tooltipDescription}>
+                Курьер привозит заказ, оставляет его у двери и уходит, а вам приходит уведомление на
+                телефон о том, что заказ доставлен
+              </p>
+            </div>
+          </Tooltip>
+        </div>
       )}
       <CheckoutButtons prev={prev} disabled={!isFormValid} />
     </form>

@@ -1,0 +1,53 @@
+@import 'styles';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: $bg-primary;
+  color: $text-primary;
+  padding: 8px;
+  border-radius: 8px;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0px 2px 6px 0px rgba(28, 39, 49, 0.08);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.tooltip.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.tooltip.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.tooltip.left {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+.tooltip.right {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}

@@ -7,3 +7,4 @@ export * from './icons';
 export * from './progress-bar';
 export * from './select';
 export * from './checkbox';
+export * from './tooltip';
