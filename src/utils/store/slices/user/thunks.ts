@@ -59,7 +59,10 @@ export const updateUserData = createAsyncThunk<
 >('user/update', async (userData: UpdateUserDataRequest, { rejectWithValue }) => {
   try {
     const response = await updateUserDataApi(userData);
-    return response.data;
+    return {
+      ...response.res.data,
+      user: { ...response.params.profile, phone: response.params.phone }
+    };
   } catch (error) {
     return rejectWithValue({
       reason: error?.response?.data?.reason || 'Неизвестная ошибка'

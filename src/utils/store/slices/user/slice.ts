@@ -97,6 +97,7 @@ export const userSlice = createSlice({
       .addCase(getOrders.fulfilled, (state, action) => {
         state.loading = false;
         state.orders = action.payload.orders;
+      });
     builder
       .addCase(updateUserData.pending, (state) => {
         state.loading = true;
@@ -107,7 +108,7 @@ export const userSlice = createSlice({
         state.requestError = action.payload.reason;
       })
       .addCase(updateUserData.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
+        state.user = { ...state.user, ...action.payload.user };
         state.loading = false;
       });
   }
