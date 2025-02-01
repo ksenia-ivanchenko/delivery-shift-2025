@@ -46,11 +46,12 @@ export const CheckOrder = ({ prev, next }) => {
       }
     };
     dispatch(createOrder(orderRequestData));
+    
     next();
   };
 
   return (
-    <form className={styles.content} onSubmit={handleSubmit}>
+    <form className={styles.content} onSubmit={handleSubmit} id='check'>
       <ul className={styles.cardList}>
         <CheckOrderCard
           param='Получатель'

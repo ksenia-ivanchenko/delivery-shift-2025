@@ -16,6 +16,7 @@ type DropdownProps = {
   placeholder?: string;
   suggestedOptions?: Option[];
   label?: string;
+  className?: string;
 };
 
 export const Dropdown = ({
@@ -25,7 +26,8 @@ export const Dropdown = ({
   onSelect,
   placeholder,
   suggestedOptions,
-  label
+  label,
+  className
 }: DropdownProps) => {
   const dropdown = useDropdown(onSelect);
 
@@ -36,7 +38,7 @@ export const Dropdown = ({
   }, [defaultSelectedOption, dropdown.selectedOption]);
 
   return (
-    <div className={styles.dropdownContainer} ref={dropdown.dropdownRef}>
+    <div className={clsx(styles.dropdownContainer, className)} ref={dropdown.dropdownRef}>
       {label && <span className={styles.label}>{label}</span>}
 
       <div
@@ -56,7 +58,7 @@ export const Dropdown = ({
         <DropdownList options={options} handleOptionClick={dropdown.handleOptionClick} />
       ) : (
         <div className={styles.suggestedOptions}>
-          {suggestedOptions.map((option, index) => (
+          {suggestedOptions?.map((option, index) => (
             <Button
               key={index}
               type='button'
