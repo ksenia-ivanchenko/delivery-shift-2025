@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { AuthForm } from 'components';
 import { Input, Preloader } from 'ui-kit';
 import { createOtp } from 'api';
-import { allowedKeys, formatPhoneNumber, isNumber, validatePhone } from 'helpers';
 import { setUser, useDispatch } from 'store';
+import { useInputPhone } from 'hooks';
 
 type AuthPhoneProps = {
   goToNextStep: () => void;
@@ -13,9 +13,8 @@ type AuthPhoneProps = {
 export const AuthPhone = ({ goToNextStep }: AuthPhoneProps) => {
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [phone, setPhone] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const phoneInput = useInputPhone();
 
   useEffect(() => {
     if (inputRef.current) {
@@ -24,7 +23,7 @@ export const AuthPhone = ({ goToNextStep }: AuthPhoneProps) => {
   }, []);
 
   const handleSubmit = async () => {
-    const phoneRequest = phone.replace(/[\+\s]/g, '').replace(/^7/, '8');
+    const phoneRequest = phoneInput.phone.replace(/[\+\s]/g, '').replace(/^7/, '8');
     setLoading(true);
     try {
       await createOtp({ phone: phoneRequest });
@@ -35,37 +34,21 @@ export const AuthPhone = ({ goToNextStep }: AuthPhoneProps) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = formatPhoneNumber(e.target.value);
-    const validationError = validatePhone(formattedValue.replace(/\s+/g, ''));
-    setPhone(formattedValue);
-    setError(validationError);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (
-      (!allowedKeys.includes(e.key) && !isNumber(e.key)) ||
-      phone.replace(/\s+/g, '').length > 11
-    ) {
-      e.preventDefault();
-    }
-  };
-
   return (
     <AuthForm
       onSubmit={handleSubmit}
       buttonText={loading ? <Preloader /> : 'Продолжить'}
       title='Вход'
       description='Введите номер телефона для входа в личный кабинет'
-      valid={!error && phone.length > 0}
+      valid={!phoneInput.error && phoneInput.phone.length > 0}
     >
       <Input
         placeholder='Телефон'
         type='tel'
-        error={error}
-        value={phone}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        error={phoneInput.error}
+        value={phoneInput.phone}
+        onChange={phoneInput.handleInputChange}
+        onKeyPress={phoneInput.handleKeyPress}
         id='phone'
         ref={inputRef}
       />

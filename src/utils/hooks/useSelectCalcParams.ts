@@ -5,22 +5,22 @@ import { Option } from 'ui-kit/dropdown-list/dropdown-list';
 
 const initialCalcParams = {
   package: { length: 0, width: 0, height: 0, weight: 0 },
-  senderPoint: { latitude: 0, longitude: 0 },
-  receiverPoint: { latitude: 0, longitude: 0 }
+  senderPoint: { latitude: 0, longitude: 0, id: '', name: '' },
+  receiverPoint: { latitude: 0, longitude: 0, id: '', name: '' }
 };
 export const useSelectCalcParams = () => {
-  const [calcParams, setCalcParams] = useState<CalculateDeliveryRequest>(initialCalcParams);
+  const [calcParams, setCalcParams] = useState(initialCalcParams);
 
   const handleSelectSender = (option: Option) => {
     setCalcParams((prevState) => ({
       ...prevState,
-      senderPoint: { latitude: option.value.latitude, longitude: option.value.longitude }
+      senderPoint: option.value
     }));
   };
   const handleSelectReceiver = (option: Option) => {
     setCalcParams((prevState) => ({
       ...prevState,
-      receiverPoint: { latitude: option.value.latitude, longitude: option.value.longitude }
+      receiverPoint: option.value
     }));
   };
   const handleSelectPackage = (option: Option) => {

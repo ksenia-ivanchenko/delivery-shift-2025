@@ -65,10 +65,7 @@ export type Person = {
   phone: string;
 };
 
-export enum Payer {
-  RECEIVER = 'RECEIVER',
-  SENDER = 'SENDER'
-}
+export type Payers = 'RECEIVER' | 'SENDER';
 
 export type PostOrderRequest = {
   senderPoint: Point;
@@ -77,13 +74,14 @@ export type PostOrderRequest = {
   receiverPoint: Point;
   receiverAddress: Address;
   receiver: Person;
-  payer: Payer;
+  payer: Payers;
   option: DeliveryOption;
 };
 
 export type OrderResponse = PostOrderRequest & {
   status: 0 | 1 | 2 | 3 | 4;
   cancellable: boolean;
+  _id: string;
 };
 
 export type PostOrderResponse = {
