@@ -44,11 +44,13 @@ export const CheckoutPage = () => {
           content: (
             <Contacts
               defaultValues={
-                order.sender ?? {
-                  ...order.sender,
-                  ...user.user,
-                  phone: formatPhoneNumber(user.user.phone)
-                }
+                order.sender.firstname
+                  ? order.sender
+                  : {
+                      ...order.sender,
+                      ...user.user,
+                      phone: formatPhoneNumber(user.user.phone)
+                    }
               }
               type='sender'
               next={goToNextStep}
